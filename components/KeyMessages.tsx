@@ -6,7 +6,7 @@ export default function KeyMessages() {
     <section id="messages" className="py-16 scroll-mt-16 border-t border-hairline">
       <div className="max-w-content mx-auto px-8">
         <Reveal>
-          <div className="flex items-start gap-4 mb-7">
+          <div className="flex items-start gap-4 mb-6">
             <div className="w-14 h-14 min-w-[56px] rounded-full bg-orange flex items-center justify-center">
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="currentColor">
                 <path d="M3 11l18-5v12L3 13v-2z" />
@@ -22,7 +22,7 @@ export default function KeyMessages() {
           </div>
         </Reveal>
 
-        <div className="flex flex-col gap-3.5 mb-10">
+        <div className="flex flex-col gap-4 mb-10">
           {keyMessages.map((m, i) => (
             <Reveal key={m.quote} delay={i * 90}>
               <div

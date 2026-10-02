@@ -18,7 +18,7 @@ export default function ExecSummary() {
         <div className="grid md:grid-cols-2 gap-5 mb-5">
           {execCards.map((card, i) => (
             <Reveal key={card.title} delay={i * 90}>
-              <div className="bg-card rounded-[10px] p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-default group">
+              <div className="bg-card rounded-[10px] p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-default group">
                 <div className="w-11 h-11 rounded-full bg-orange flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <Icon name={card.icon} className="w-[22px] h-[22px] text-white" />
                 </div>
@@ -30,7 +30,7 @@ export default function ExecSummary() {
         </div>
 
         <Reveal delay={360}>
-          <div className="bg-orange text-white rounded-[10px] px-7 py-5">
+          <div className="bg-orange text-white rounded-[10px] px-6 py-5">
             <span className="font-bold text-[13px] tracking-[0.5px] mr-2">{documentationBanner.title}</span>
             <span className="text-[14.5px]">{documentationBanner.body}</span>
           </div>

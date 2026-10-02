@@ -9,7 +9,7 @@ export default function Recommendations() {
           <h2 className="text-[30px] mb-2">Recommendations &amp; Next Steps</h2>
           <p className="text-muted italic text-[15px] mb-8">Turning findings into a rollout plan</p>
         </Reveal>
-        <div className="flex flex-col gap-3.5">
+        <div className="flex flex-col gap-4">
           {recommendations.map((r, i) => (
             <Reveal key={r.num} delay={i * 90}>
               <div className="bg-card rounded-[10px] p-5 grid grid-cols-[56px_1fr] gap-5 items-start transition-all duration-300 hover:bg-orange/5 hover:-translate-y-0.5">

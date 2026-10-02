@@ -43,9 +43,9 @@ export default function Overview() {
           </p>
         </Reveal>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
+        <div className="grid lg:grid-cols-2 gap-5 items-start">
           <Reveal delay={80}>
-            <div className="bg-white border border-hairline rounded-[10px] p-5 transition-shadow duration-300 hover:shadow-md">
+            <div className="bg-white border border-hairline rounded-[10px] p-6 transition-shadow duration-300 hover:shadow-md">
               <div className="text-sm text-center font-bold mb-2">
                 Sentiment by Theme (n={meta.stakeholders}, varies by question)
               </div>
@@ -78,10 +78,10 @@ export default function Overview() {
             <Reveal delay={120}>
               <h3 className="text-lg mb-3.5">What to watch</h3>
             </Reveal>
-            <div className="flex flex-col gap-3.5">
+            <div className="flex flex-col gap-4">
               {watchStats.map((s, i) => (
                 <Reveal key={s.text} delay={160 + i * 90}>
-                  <div className="bg-card rounded-[10px] p-4 flex items-center gap-4 transition-all duration-300 hover:bg-orange/5 hover:-translate-y-0.5">
+                  <div className="bg-card rounded-[10px] p-5 flex items-center gap-4 transition-all duration-300 hover:bg-orange/5 hover:-translate-y-0.5">
                     <div className="font-serif font-bold text-orange text-[26px] min-w-[74px]">
                       <AnimatedNumber value={s.big} />
                     </div>

@@ -63,7 +63,7 @@ type ChartSpec = NonNullable<ThemeSectionData["chart"]>;
 function ChartBox({ chart, delay }: { chart: ChartSpec; delay: number }) {
   return (
     <Reveal delay={delay}>
-      <div className="bg-white border border-hairline rounded-[10px] p-5 transition-shadow duration-300 hover:shadow-md">
+      <div className="bg-white border border-hairline rounded-[10px] p-6 transition-shadow duration-300 hover:shadow-md">
         <div className="text-sm text-center font-bold mb-2">{chart.title}</div>
         <ResponsiveContainer width="100%" height={260}>
           {chart.type === "bar" ? (
@@ -100,10 +100,10 @@ export default function ThemeSection({ data, index }: { data: ThemeSectionData; 
   const hasVisual = chart || chart2;
 
   return (
-    <section className="py-14 border-t border-hairline scroll-mt-16">
+    <section className="py-16 border-t border-hairline scroll-mt-16">
       <div className="max-w-content mx-auto px-8">
         <Reveal>
-          <div className="flex items-start gap-4 mb-5">
+          <div className="flex items-start gap-4 mb-6">
             <div className="w-14 h-14 min-w-[56px] rounded-full bg-orange flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:rotate-6">
               <Icon name={icon} className="w-6 h-6 text-white" />
             </div>
@@ -113,7 +113,7 @@ export default function ThemeSection({ data, index }: { data: ThemeSectionData; 
             </div>
           </div>
 
-          <div className="bg-orange text-white rounded-lg px-5 py-4 mb-7 text-[14.5px]">
+          <div className="bg-orange text-white rounded-[10px] px-6 py-5 mb-7 text-[14.5px]">
             <b className="inline-block tracking-[1.2px] text-xs mr-2.5 opacity-75">SO WHAT</b>
             {sowhat}
           </div>

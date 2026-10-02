@@ -37,7 +37,7 @@ export default function Methodology() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-3">
           <StatCard num={String(meta.stakeholders)} label="Stakeholders interviewed" delay={0} />
           <StatCard num={String(meta.roleLevels)} label="Role levels Associate to Director" delay={80} />
           <StatCard num={String(meta.clusters)} label="Thematic clusters analyzed" delay={160} />

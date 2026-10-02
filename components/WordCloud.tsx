@@ -26,7 +26,7 @@ export default function WordCloud() {
     <section id="wordcloud" className="py-16 scroll-mt-16 border-t border-hairline">
       <div className="max-w-content mx-auto px-8">
         <Reveal>
-          <div className="flex items-start gap-4 mb-5">
+          <div className="flex items-start gap-4 mb-6">
             <div className="w-14 h-14 min-w-[56px] rounded-full bg-orange flex items-center justify-center">
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="currentColor">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -40,7 +40,7 @@ export default function WordCloud() {
             </div>
           </div>
 
-          <div className="bg-orange text-white rounded-lg px-5 py-4 mb-7 text-[14.5px]">
+          <div className="bg-orange text-white rounded-[10px] px-6 py-5 mb-7 text-[14.5px]">
             <b className="inline-block tracking-[1.2px] text-xs mr-2.5 opacity-75">SO WHAT</b>
             &ldquo;Comfortable&rdquo; is the most-used word stakeholders reach for when describing AI — followed
             closely by Trust, Judgment, and Risk, echoing a practice that is engaged but still calibrating.
@@ -48,7 +48,7 @@ export default function WordCloud() {
         </Reveal>
 
         <Reveal delay={100}>
-          <div className="relative bg-white border border-hairline rounded-[14px] p-8 shadow-sm">
+          <div className="relative bg-white border border-hairline rounded-[10px] p-6">
             <div className="relative w-full" style={{ paddingBottom: `${(VB_H / VB_W) * 100}%` }}>
               <svg viewBox={`0 0 ${VB_W} ${VB_H}`} className="absolute inset-0 w-full h-full">
                 {words.map((w) => {

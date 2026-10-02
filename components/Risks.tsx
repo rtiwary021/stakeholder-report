@@ -9,7 +9,7 @@ export default function Risks() {
           <div className="text-orange font-bold text-xs tracking-[1.6px] mb-1.5">WHERE WE STAND TODAY</div>
           <h2 className="text-[30px] mb-8">What&apos;s Working, and Where Skepticism Still Lives</h2>
         </Reveal>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-5">
           <div>
             <Reveal>
               <h3 className="text-orange text-[17px] mb-4">What We Have Going For Us</h3>
