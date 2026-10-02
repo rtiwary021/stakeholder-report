@@ -1,0 +1,155 @@
+[
+  {
+    "word": "Comfortable",
+    "x": 50.0,
+    "y": 50.0,
+    "fontSize": 110.0,
+    "color": "#FD5108",
+    "rotate": 0,
+    "freq": 37
+  },
+  {
+    "word": "Trust",
+    "x": 50.13,
+    "y": 32.76,
+    "fontSize": 81.7,
+    "color": "#6E6E6E",
+    "rotate": 0,
+    "freq": 21
+  },
+  {
+    "word": "Judgment",
+    "x": 49.33,
+    "y": 66.84,
+    "fontSize": 75.3,
+    "color": "#FE7C39",
+    "rotate": 0,
+    "freq": 18
+  },
+  {
+    "word": "Risk",
+    "x": 34.29,
+    "y": 25.24,
+    "fontSize": 68.3,
+    "color": "#A1A8B3",
+    "rotate": 90,
+    "freq": 15
+  },
+  {
+    "word": "Accurate",
+    "x": 48.46,
+    "y": 79.81,
+    "fontSize": 65.9,
+    "color": "#FFAA72",
+    "rotate": 0,
+    "freq": 14
+  },
+  {
+    "word": "Excited",
+    "x": 86.69,
+    "y": 56.4,
+    "fontSize": 55.0,
+    "color": "#6E6E6E",
+    "rotate": -90,
+    "freq": 10
+  },
+  {
+    "word": "Confident",
+    "x": 53.13,
+    "y": 19.52,
+    "fontSize": 51.9,
+    "color": "#FD5108",
+    "rotate": 0,
+    "freq": 9
+  },
+  {
+    "word": "Concerned",
+    "x": 51.48,
+    "y": 90.73,
+    "fontSize": 51.9,
+    "color": "#6E6E6E",
+    "rotate": 0,
+    "freq": 9
+  },
+  {
+    "word": "Hopeful",
+    "x": 49.84,
+    "y": 9.53,
+    "fontSize": 48.7,
+    "color": "#FE7C39",
+    "rotate": 0,
+    "freq": 8
+  },
+  {
+    "word": "Believe",
+    "x": 71.04,
+    "y": 33.41,
+    "fontSize": 45.2,
+    "color": "#A1A8B3",
+    "rotate": 0,
+    "freq": 7
+  },
+  {
+    "word": "Hesitant",
+    "x": 23.16,
+    "y": 79.35,
+    "fontSize": 45.2,
+    "color": "#FFAA72",
+    "rotate": 90,
+    "freq": 7
+  },
+  {
+    "word": "Skeptical",
+    "x": 74.14,
+    "y": 79.01,
+    "fontSize": 37.5,
+    "color": "#6E6E6E",
+    "rotate": 0,
+    "freq": 5
+  },
+  {
+    "word": "Worried",
+    "x": 74.66,
+    "y": 64.76,
+    "fontSize": 37.5,
+    "color": "#FD5108",
+    "rotate": 0,
+    "freq": 5
+  },
+  {
+    "word": "Nervous",
+    "x": 73.26,
+    "y": 25.53,
+    "fontSize": 33.0,
+    "color": "#6E6E6E",
+    "rotate": 0,
+    "freq": 4
+  },
+  {
+    "word": "Faith",
+    "x": 70.88,
+    "y": 70.91,
+    "fontSize": 22.0,
+    "color": "#FE7C39",
+    "rotate": 0,
+    "freq": 2
+  },
+  {
+    "word": "Wary",
+    "x": 29.61,
+    "y": 64.81,
+    "fontSize": 22.0,
+    "color": "#A1A8B3",
+    "rotate": 0,
+    "freq": 2
+  },
+  {
+    "word": "Fear",
+    "x": 28.7,
+    "y": 33.39,
+    "fontSize": 22.0,
+    "color": "#FFAA72",
+    "rotate": -90,
+    "freq": 2
+  }
+]
