@@ -7,7 +7,6 @@ import WordCloud from "@/components/WordCloud";
 import ThemeSection from "@/components/ThemeSection";
 import Risks from "@/components/Risks";
 import Recommendations from "@/components/Recommendations";
-import Rollout from "@/components/Rollout";
 import KeyMessages from "@/components/KeyMessages";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -31,7 +30,6 @@ export default function Home() {
       </div>
       <Risks />
       <Recommendations />
-      <Rollout />
       <KeyMessages />
       <Footer />
       <BackToTop />

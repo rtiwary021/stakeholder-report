@@ -11,7 +11,6 @@ const SECTIONS = [
   { id: "themes", label: "Themes" },
   { id: "risks", label: "Risks" },
   { id: "recommendations", label: "Recommendations" },
-  { id: "rollout", label: "Rollout" },
   { id: "messages", label: "Messaging" },
 ];
 
