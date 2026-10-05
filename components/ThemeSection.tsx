@@ -37,7 +37,7 @@ function QuoteCard({ q, quote, attr }: { q: string; quote: string; attr: string 
   const isLong = quote.length > 180;
   return (
     <div
-      className="bg-card rounded-[10px] p-6 mb-4 cursor-pointer transition-colors hover:bg-orange/5"
+      className="bg-card rounded-[10px] p-6 flex-1 flex flex-col cursor-pointer transition-colors hover:bg-orange/5"
       onClick={() => isLong && setExpanded((e) => !e)}
     >
       <div className="text-orange font-bold text-[14.5px] mb-2.5">Q. {q}</div>
@@ -53,7 +53,7 @@ function QuoteCard({ q, quote, attr }: { q: string; quote: string; attr: string 
           {expanded ? "Show less ▲" : "Read full quote ▼"}
         </div>
       )}
-      <div className="text-[13px] text-muted italic mt-2.5">— {attr}</div>
+      <div className="text-[13px] text-muted italic mt-auto pt-2.5">— {attr}</div>
     </div>
   );
 }
@@ -62,8 +62,8 @@ type ChartSpec = NonNullable<ThemeSectionData["chart"]>;
 
 function ChartBox({ chart, delay }: { chart: ChartSpec; delay: number }) {
   return (
-    <Reveal delay={delay}>
-      <div className="bg-white border border-hairline rounded-[10px] p-6 transition-shadow duration-300 hover:shadow-md">
+    <Reveal delay={delay} className="flex-1 flex">
+      <div className="flex-1 flex flex-col justify-center bg-white border border-hairline rounded-[10px] p-6 transition-shadow duration-300 hover:shadow-md">
         <div className="text-sm text-center font-bold mb-2">{chart.title}</div>
         <ResponsiveContainer width="100%" height={260}>
           {chart.type === "bar" ? (
@@ -119,9 +119,9 @@ export default function ThemeSection({ data, index }: { data: ThemeSectionData; 
           </div>
         </Reveal>
 
-        <div className={`grid gap-8 ${hasVisual ? "md:grid-cols-2" : ""} items-start`}>
-          <Reveal delay={100}>
-            <div>
+        <div className={`grid gap-5 ${hasVisual ? "md:grid-cols-2" : ""} items-stretch`}>
+          <Reveal delay={100} className="flex">
+            <div className="flex-1 grid auto-rows-fr gap-5">
               {quotes.map((q, i) => (
                 <QuoteCard key={`${q.q}-${i}`} {...q} />
               ))}

@@ -18,10 +18,10 @@ function BarTooltip({ active, payload }: any) {
 
 export default function Theme8() {
   return (
-    <section className="py-14 border-t border-hairline scroll-mt-16">
+    <section className="py-16 border-t border-hairline scroll-mt-16">
       <div className="max-w-content mx-auto px-8">
         <Reveal>
-          <div className="flex items-start gap-4 mb-5">
+          <div className="flex items-start gap-4 mb-6">
             <div className="w-14 h-14 min-w-[56px] rounded-full bg-orange flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:rotate-6">
               <Icon name={theme8.icon} className="w-6 h-6 text-white" />
             </div>
@@ -37,16 +37,16 @@ export default function Theme8() {
         </Reveal>
 
         {/* Top section: peer-influence quote + chart */}
-        <div className="grid md:grid-cols-2 gap-5 items-start mb-10">
-          <Reveal delay={100}>
-            <div className="bg-card rounded-[10px] p-6">
+        <div className="grid md:grid-cols-2 gap-5 items-stretch mb-10">
+          <Reveal delay={100} className="flex">
+            <div className="flex-1 flex flex-col bg-card rounded-[10px] p-6">
               <div className="text-orange font-bold text-[14.5px] mb-2.5">Q. {theme8.quote.q}</div>
               <blockquote className="italic text-[15px] m-0">&ldquo;{theme8.quote.quote}&rdquo;</blockquote>
-              <div className="text-[13px] text-muted italic mt-2.5">— {theme8.quote.attr}</div>
+              <div className="text-[13px] text-muted italic mt-auto pt-2.5">— {theme8.quote.attr}</div>
             </div>
           </Reveal>
-          <Reveal delay={200}>
-            <div className="bg-white border border-hairline rounded-[10px] p-6 transition-shadow duration-300 hover:shadow-md">
+          <Reveal delay={200} className="flex">
+            <div className="flex-1 flex flex-col justify-center bg-white border border-hairline rounded-[10px] p-6 transition-shadow duration-300 hover:shadow-md">
               <div className="text-sm text-center font-bold mb-2">{theme8.chart.title}</div>
               <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={theme8.chart.data} layout="vertical" margin={{ top: 5, right: 30, left: 10, bottom: 5 }}>
