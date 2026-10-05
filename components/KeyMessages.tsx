@@ -55,10 +55,6 @@ export default function KeyMessages() {
               </div>
             ))}
           </div>
-          <p className="text-[13px] text-muted italic mt-3.5">
-            Grounded in: judgment &amp; review is the unanimous top skill (16 of 16); hands-on learning
-            preference (Theme 7); client-facing time as the top use of freed capacity (Theme 5).
-          </p>
         </Reveal>
       </div>
     </section>
