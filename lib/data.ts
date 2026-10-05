@@ -225,7 +225,7 @@ export const themes: ThemeSectionData[] = [
         { name: "Test case generation", value: 25 },
         { name: "Client recommendations", value: 0 },
       ],
-      color: COLORS.orange,
+      color: COLORS.grey,
       suffix: "%",
     },
   },
