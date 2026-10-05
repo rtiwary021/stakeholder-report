@@ -81,20 +81,23 @@ export const documentationBanner = {
 
 export type Quote = { q: string; quote: string; attr: string };
 
+export type ChartData = {
+  type: "bar" | "donut";
+  title: string;
+  data: { name: string; value: number }[];
+  color?: string;
+  colors?: string[];
+  suffix?: string;
+};
+
 export type ThemeSectionData = {
   eyebrow: string;
   title: string;
   icon: string;
   sowhat: string;
   quotes: Quote[];
-  chart?: {
-    type: "bar" | "donut";
-    title: string;
-    data: { name: string; value: number }[];
-    color?: string;
-    colors?: string[];
-    suffix?: string;
-  };
+  chart?: ChartData;
+  chart2?: ChartData;
 };
 
 export const themes: ThemeSectionData[] = [
@@ -160,6 +163,17 @@ export const themes: ThemeSectionData[] = [
         { name: "Low-value / underused deliverables", value: 6 },
       ],
       color: COLORS.orange2,
+      suffix: "%",
+    },
+    chart2: {
+      type: "bar",
+      title: "Reaction to agents generating requirements & designs (n=16)",
+      data: [
+        { name: "Mixed", value: 50 },
+        { name: "Excited", value: 25 },
+        { name: "Concerned", value: 25 },
+      ],
+      colors: [COLORS.orange2, COLORS.orange, COLORS.grey],
       suffix: "%",
     },
   },
