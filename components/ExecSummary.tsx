@@ -1,6 +1,6 @@
 "use client";
 
-import { execCards, meta, documentationBanner } from "@/lib/data";
+import { execCards, meta, documentationBanner, execOverview } from "@/lib/data";
 import { Icon } from "./Icon";
 import Reveal from "./Reveal";
 
@@ -10,8 +10,8 @@ export default function ExecSummary() {
       <div className="max-w-content mx-auto px-8">
         <Reveal>
           <h2 className="text-[30px] mb-2">Executive Summary</h2>
-          <p className="text-muted italic text-[15px] mb-8">
-            Headline findings synthesized from {meta.stakeholders} completed stakeholder interviews
+          <p className="text-muted italic text-[15px] mb-8 max-w-[950px]">
+            {execOverview}
           </p>
         </Reveal>
 

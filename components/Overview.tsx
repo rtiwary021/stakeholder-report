@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { sentimentByTheme, watchStats, COLORS, meta, themeDefinitions, roleSentiment } from "@/lib/data";
+import { sentimentByTheme, watchStats, COLORS, meta, overviewStatement } from "@/lib/data";
 import Reveal from "./Reveal";
 import AnimatedNumber from "./AnimatedNumber";
 
@@ -37,9 +37,9 @@ export default function Overview() {
     <section id="overview" className="py-16 scroll-mt-16">
       <div className="max-w-content mx-auto px-8">
         <Reveal>
-          <h2 className="text-[30px] mb-2">Readiness &amp; Sentiment Overview</h2>
-          <p className="text-muted italic text-[15px] mb-8">
-            Sentiment coded across {meta.stakeholders} completed interviews, by theme and by role
+          <h2 className="text-[30px] mb-2">Sentiment Overview</h2>
+          <p className="text-muted italic text-[15px] mb-8 max-w-[950px]">
+            {overviewStatement}
           </p>
         </Reveal>
 
@@ -61,16 +61,6 @@ export default function Overview() {
                   <Bar dataKey="Concerned" stackId="a" fill={COLORS.grey} radius={[4, 4, 0, 0]} animationDuration={900} animationBegin={300} />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="text-[11px] text-muted italic mt-2 mb-3 leading-snug">{themeDefinitions}</p>
-              <div className="bg-card rounded-lg px-3 py-2.5 text-[12.5px]">
-                <span className="font-bold text-orange mr-1.5">By role (positive-or-mixed share):</span>
-                {roleSentiment.map((r, i) => (
-                  <span key={r.role}>
-                    {i > 0 && " • "}
-                    {r.role} {r.pct}
-                  </span>
-                ))}
-              </div>
             </div>
           </Reveal>
 
@@ -81,7 +71,7 @@ export default function Overview() {
             <div className="flex flex-col gap-4">
               {watchStats.map((s, i) => (
                 <Reveal key={s.text} delay={160 + i * 90}>
-                  <div className="bg-card rounded-[10px] p-5 flex items-center gap-4 transition-all duration-300 hover:bg-orange/5 hover:-translate-y-0.5">
+                  <div className="bg-card rounded-[10px] p-6 flex items-center gap-4 transition-all duration-300 hover:bg-orange/5 hover:-translate-y-0.5">
                     <div className="font-serif font-bold text-orange text-[26px] min-w-[74px]">
                       <AnimatedNumber value={s.big} />
                     </div>

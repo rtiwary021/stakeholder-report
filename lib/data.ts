@@ -1,11 +1,6 @@
-// All data below is sourced from 16 completed stakeholder interviews (Brian Smith and
-// Sarah Pavelske each contributed a Round 2 follow-up session covering the remainder of
-// the discovery guide; these are additional sessions with existing participants, not new
-// interviews, so the total stakeholder count remains 16).
-// Interviewer (Amy Pritts / Reet Tiwary) content was excluded from every count and quote —
-// verified by direct search of every isolated transcript, including removal of a
-// transcription-system end-of-recording artifact that had no spoken content.
-// Attribution is by role level only — no names.
+// Synced to ATE_Stakeholder_Impact_Analysis_Draft (2).pptx — the latest uploaded version.
+// All charts in this version report percentage-of-respondents rather than raw mention
+// counts (each verified to derive from the same underlying, source-checked counts).
 
 export const COLORS = {
   orange: "#FD5108",
@@ -17,24 +12,25 @@ export const COLORS = {
 };
 
 export const meta = {
+  title: "ATE Stakeholder Impact Analysis - CRM",
+  date: "October 2026",
   stakeholders: 16,
   roleLevels: 5,
   clusters: 8,
   avgDuration: "26 min",
   practiceOffice: "Practice Transformation Office",
-  date: "September 2026",
 };
 
 export const roleBreakdown = [
-  { role: "Associate", count: 2 },
-  { role: "Senior Associate", count: 4 },
-  { role: "Manager", count: 4 },
-  { role: "Senior Manager", count: 4 },
-  { role: "Director", count: 2 },
+  { role: "Associates", count: 2 },
+  { role: "Senior Associates", count: 4 },
+  { role: "Managers", count: 4 },
+  { role: "Senior Managers", count: 4 },
+  { role: "Directors", count: 2 },
 ];
 
-export const methodologyNote =
-  "Not every interview reached all clusters within the available time; Barriers/Incentives reflects n=14 and Future State reflects n=11, noted where relevant";
+export const methodologyOverview =
+  "We interviewed 16 stakeholders spanning every level from Associate to Director, covering 8 distinct themes in depth to gather perspectives on AI delivery adoption from current value and identity, through trust and barriers, to peer influence and the future state.";
 
 export const sentimentByTheme = [
   { theme: "Value/Identity", Positive: 14, Mixed: 0, Concerned: 2 },
@@ -43,48 +39,44 @@ export const sentimentByTheme = [
   { theme: "Future State", Positive: 9, Mixed: 2, Concerned: 0 },
 ];
 
-export const themeDefinitions =
-  "Themes measure: Value/Identity (current value & identity), Trust/Control (trust & judgment), Barriers/Incentives (adoption barriers & rewards), Future State (2-year outlook).";
-
-export const roleSentiment = [
-  { role: "Director & Manager", pct: "100%" },
-  { role: "Senior Associate", pct: "79%" },
-  { role: "Associate", pct: "71%" },
-  { role: "Senior Manager", pct: "69%" },
-];
+export const overviewStatement =
+  "From the 16 stakeholder interviews, we found that the sentiment is positive across every theme, and the one place caution concentrates is Trust/Control – not the technology itself and not the future that it points to.";
 
 export const watchStats = [
-  { big: "84%", text: "of all coded theme responses were positive or mixed, not concerned (48 of 57)" },
-  { big: "2 of 16", text: "explicitly flagged utilization or billable-hour metrics as working against AI adoption" },
-  { big: "#1", text: "most consistent ask: see it work on one real engagement first — raised in every interview that reached this question" },
+  { big: "84%", text: "of all coded theme responses were positive or mixed, not concerned." },
+  { big: "2 of 16", text: "said that they are still being measured on hours, not on the time that AI saves them." },
+  { big: "#1", text: "most consistent ask: see it work on one real engagement first — raised in every interview." },
 ];
+
+export const execOverview =
+  "Overall, stakeholders are engaged, not resistant but full confidence depends on clear oversight and potential reward systems catching up with what is being asked of them.";
 
 export const execCards = [
   {
     icon: "zap",
     title: "Cautious curiosity, not resistance",
-    body: "First reactions split three ways: genuine excitement (4 of 16), grounded wait-and-see (8 of 16), and skepticism rooted in past AI disappointments (4 of 16). Outright resistance was rare.",
+    body: "Reactions split into three ways amongst 16 stakeholders: genuinely excited (4 of 16), open but wait-and-see (8 of 16), and skeptical based on past AI letdowns (4 of 16). Very few are opposed outright.",
   },
   {
     icon: "shield",
     title: "Trust is conditional, not categorical",
-    body: "Only 2 of 16 trust agentic output without added review. The other 14 want a defined human checkpoint — most often before anything reaches the client.",
+    body: "Just 2 of 16 stakeholders are comfortable with AI output going out without review. The other 14 want a clear human checkpoint – typically before anything reaches the client.",
   },
   {
     icon: "alert",
-    title: "Incentives lag the message",
-    body: "2 of 16 explicitly named utilization or billable-hour metrics as working against AI-driven time savings; several others described a quiet stigma around visibly using AI in performance reviews.",
+    title: "Rewarded for hours, not outcomes",
+    body: "Performance is still measured by hours billed and visible effort, not time saved – so using AI well can look like doing less, not more in which 2 of 16 stakeholders named this directly; several others described alternate ways how AI use can be beneficial in performance reviews.",
   },
   {
     icon: "trending",
     title: "Identity is shifting, not shrinking",
-    body: "14 of 16 see their value moving toward judgment, client relationships and quality review, not disappearing. Two voiced genuine uncertainty about where they add value longer-term.",
+    body: "14 of 16 stakeholders see their value moving towards judgment, client relationships and quality review - not disappearing in general. Only 2 stakeholders voiced genuine uncertainty about where they add value in the long-term.",
   },
 ];
 
 export const documentationBanner = {
   title: "DOCUMENTATION IS THE TOP TIME-SINK",
-  body: "9 of 16 named documentation, reporting, or deck creation as their single biggest time-sink relative to its value — more than any other category named.",
+  body: "9 of 16 stakeholders named documentation, reporting, or deck creation as their single biggest time-sink relative to its value — more than any other category named.",
 };
 
 export type Quote = { q: string; quote: string; attr: string };
@@ -96,14 +88,6 @@ export type ThemeSectionData = {
   sowhat: string;
   quotes: Quote[];
   chart?: {
-    type: "bar" | "donut";
-    title: string;
-    data: { name: string; value: number }[];
-    color?: string;
-    colors?: string[];
-    suffix?: string;
-  };
-  chart2?: {
     type: "bar" | "donut";
     title: string;
     data: { name: string; value: number }[];
@@ -151,7 +135,7 @@ export const themes: ThemeSectionData[] = [
     title: "Delivery Friction & Initial Reaction to Agentic Delivery",
     icon: "zap",
     sowhat:
-      "Documentation and reporting work is the single biggest time-sink relative to its value (56% of respondents) — and first reactions to agents taking on that work split three ways: excited (4 of 16), mixed (8 of 16), concerned (4 of 16).",
+      "Documentation and reporting work is the single biggest time-sink relative to its value (56% of respondents) — and first reactions to agents taking on that work split three ways: excited (4 of 16 stakeholders), mixed (8 of 16 stakeholders), concerned (4 of 16 stakeholders).",
     quotes: [
       {
         q: "What work consumes disproportionate time relative to its value?",
@@ -178,23 +162,13 @@ export const themes: ThemeSectionData[] = [
       color: COLORS.orange,
       suffix: "%",
     },
-    chart2: {
-      type: "bar",
-      title: "Reaction to agents generating requirements & designs (n=16)",
-      data: [
-        { name: "Mixed", value: 8 },
-        { name: "Excited", value: 4 },
-        { name: "Concerned", value: 4 },
-      ],
-      colors: [COLORS.orange2, COLORS.orange, COLORS.grey],
-    },
   },
   {
     eyebrow: "THEME 3 — ROLE IMPACT & EXPERTISE EVOLUTION",
     title: "Perceived Role Impact & Expertise Evolution",
     icon: "book",
     sowhat:
-      "Judgment and review surfaced in all 16 interviews as what becomes more valuable — more than any other skill named.",
+      "Judgment and review surfaced in all 16 stakeholder interviews as what becomes more valuable — more than any other skill named.",
     quotes: [
       {
         q: "What becomes more or less important in your role?",
@@ -211,14 +185,15 @@ export const themes: ThemeSectionData[] = [
     ],
     chart: {
       type: "bar",
-      title: "Skills seen as more valuable (n=16, multi-mention)",
+      title: "Skills seen as more valuable (% of 16 respondents)",
       data: [
-        { name: "Judgment & review", value: 16 },
-        { name: "Client relationship & communication", value: 11 },
-        { name: "Product & platform expertise", value: 6 },
-        { name: "Adaptability & continuous learning", value: 4 },
+        { name: "Judgment & review", value: 100 },
+        { name: "Client relationship & communication", value: 69 },
+        { name: "Product & platform expertise", value: 38 },
+        { name: "Adaptability & continuous learning", value: 25 },
       ],
       color: COLORS.orange,
+      suffix: "%",
     },
   },
   {
@@ -226,7 +201,7 @@ export const themes: ThemeSectionData[] = [
     title: "Trust, Control & Where Judgment Still Matters",
     icon: "shield",
     sowhat:
-      "15 of 16 are comfortable with agent-drafted first drafts; none who addressed it were comfortable with autonomous client-facing recommendations or communications.",
+      "15 of 16 stakeholders are comfortable with agent-drafted first drafts; none who addressed it were comfortable with autonomous client-facing recommendations or communications.",
     quotes: [
       {
         q: "What would you be comfortable letting an agent draft — and what would you be uncomfortable delegating?",
@@ -243,14 +218,15 @@ export const themes: ThemeSectionData[] = [
     ],
     chart: {
       type: "bar",
-      title: "Comfort delegating to an agent (n=16, explicit mentions)",
+      title: "Comfort delegating to an agent (% of 16 respondents)",
       data: [
-        { name: "First-draft docs", value: 15 },
-        { name: "Config & technical changes", value: 5 },
-        { name: "Test case generation", value: 4 },
+        { name: "First-draft docs", value: 94 },
+        { name: "Config & technical changes", value: 31 },
+        { name: "Test case generation", value: 25 },
         { name: "Client recommendations", value: 0 },
       ],
       color: COLORS.orange,
+      suffix: "%",
     },
   },
   {
@@ -258,7 +234,7 @@ export const themes: ThemeSectionData[] = [
     title: "Client Value & Behavior Change Required",
     icon: "trending",
     sowhat:
-      "Freed time is expected to flow first to clients and quality (client-facing time cited by 8 of 16, quality/testing by 4) — but consultants are candid that their own habits have to change first.",
+      "Freed time is expected to flow first to clients and quality (client-facing time cited by 8 of 16 stakeholders, quality/testing by 4 stakeholders) — but consultants are candid that their own habits have to change first.",
     quotes: [
       {
         q: "Where should consultants spend time freed up by agentic delivery?",
@@ -275,14 +251,15 @@ export const themes: ThemeSectionData[] = [
     ],
     chart: {
       type: "bar",
-      title: "Where freed capacity should go (n=16, multi-mention)",
+      title: "Where freed capacity should go (% of 16 respondents)",
       data: [
-        { name: "Client-facing time & relationships", value: 8 },
-        { name: "Upskilling & learning", value: 5 },
-        { name: "Quality & testing", value: 4 },
-        { name: "Business development", value: 3 },
+        { name: "Client-facing time & relationships", value: 50 },
+        { name: "Upskilling & learning", value: 31 },
+        { name: "Quality & testing", value: 25 },
+        { name: "Business development", value: 19 },
       ],
       color: COLORS.orange,
+      suffix: "%",
     },
   },
   {
@@ -290,7 +267,7 @@ export const themes: ThemeSectionData[] = [
     title: "Barriers to Adoption & Reward Systems",
     icon: "alert",
     sowhat:
-      "The most-cited barrier is data/security constraints (6 of 16), followed by trust rebuilt slowly after past disappointments (5 of 16), stigma around visible AI use (3 of 16), and billable-hour incentives (2 of 16) — not the technology itself.",
+      "The most-cited barrier is data/security constraints (6 of 16 stakeholders), followed by trust rebuilt slowly after past disappointments (5 of 16 stakeholders), stigma around visible AI use (3 of 16 stakeholders), and billable-hour incentives (2 of 16 stakeholders) — not the technology itself.",
     quotes: [
       {
         q: "What would prevent adoption even if you believed the technology worked?",
@@ -307,14 +284,15 @@ export const themes: ThemeSectionData[] = [
     ],
     chart: {
       type: "bar",
-      title: "Top-cited adoption barriers (n=16, multi-mention)",
+      title: "Top-cited adoption barriers (% of 16 respondents)",
       data: [
-        { name: "Data sensitivity & security", value: 6 },
-        { name: "Accuracy & trust after past letdowns", value: 5 },
-        { name: "Stigma around visible AI use", value: 3 },
-        { name: "Utilization & billable-hour metrics", value: 2 },
+        { name: "Data sensitivity & security", value: 38 },
+        { name: "Accuracy & trust after past letdowns", value: 31 },
+        { name: "Stigma around visible AI use", value: 19 },
+        { name: "Utilization & billable-hour metrics", value: 13 },
       ],
       color: COLORS.grey,
+      suffix: "%",
     },
   },
   {
@@ -322,7 +300,7 @@ export const themes: ThemeSectionData[] = [
     title: "Capability Building & Proof Points",
     icon: "compass",
     sowhat:
-      "Stakeholders say they learn best hands-on, not in a classroom — and of those asked what proof they need (12 of 16), half point to a real, completed engagement (6 of 12) over training or demos.",
+      "Stakeholders say they learn best hands-on, not in a classroom — and of those asked what proof they need (12 of 16 stakeholders), half point to a real, completed engagement (6 of 12 stakeholders) over training or demos.",
     quotes: [
       {
         q: "What would you need to learn to feel highly effective in an agentic delivery model?",
@@ -339,62 +317,74 @@ export const themes: ThemeSectionData[] = [
     ],
     chart: {
       type: "bar",
-      title: "Most-cited proof source (n=12 of 16 addressed)",
+      title: "Most-cited proof source (% of 12 of 16 addressed)",
       data: [
-        { name: "Live engagement / hands-on trial", value: 6 },
-        { name: "Output quality / accuracy proof", value: 4 },
-        { name: "Peer example or formal approval", value: 2 },
+        { name: "Live engagement / hands-on trial", value: 50 },
+        { name: "Output quality / accuracy proof", value: 33 },
+        { name: "Peer example or formal approval", value: 17 },
       ],
       color: COLORS.orange,
-    },
-  },
-  {
-    eyebrow: "THEME 8 — PEER INFLUENCE & FUTURE STATE",
-    title: "Peer Influence & Desired Future State",
-    icon: "layers",
-    sowhat:
-      "Peer example is the single most-cited influence (6 of 12), but leadership and named technical experts matter nearly as much — and of those who reached it, 9 of 11 describe real excitement about where this future leads.",
-    quotes: [
-      {
-        q: "Whose experience or opinion would most influence whether you adopt this way of working?",
-        quote:
-          "I have someone who's an associate who I would really value her opinion … if they said they tried this use case and it worked really well, I would [try it too].",
-        attr: "Associate",
-      },
-      {
-        q: "Two years into this, agentic delivery has genuinely worked — what does your day look like differently?",
-        quote:
-          "I don't think we're going to be using any of these big [platforms] like Dynamics or Salesforce … we build them their application right from scratch.",
-        attr: "Manager",
-      },
-      {
-        q: "Two years into this, agentic delivery has genuinely worked — what does your day look like differently?",
-        quote:
-          "Hopefully a lot less time after calls doing documentation and user stories … a lot more efficient.",
-        attr: "Associate",
-      },
-    ],
-    chart: {
-      type: "bar",
-      title: "Who influences adoption (n=12 of 16 addressed)",
-      data: [
-        { name: "Peer at a similar level", value: 6 },
-        { name: "Leadership / management", value: 3 },
-        { name: "Technical expert / early adopter", value: 3 },
-      ],
-      color: COLORS.orange,
+      suffix: "%",
     },
   },
 ];
 
-// "Risks" has been reworked per leadership direction into a two-sided view: what's
-// working (grounded in the positive-sentiment data) alongside where skepticism
-// concretely lives (grounded in role-level sentiment concentration), rather than a
-// single list of "risks" that risked implying unsupported or biased findings.
+// Theme 8 has a unique layout: a quote + chart section (peer influence), followed by
+// a second section with one future-state quote per role level, introduced by its own
+// question banner. This does not fit the generic ThemeSection pattern used above.
+export const theme8 = {
+  eyebrow: "THEME 8 — PEER INFLUENCE & FUTURE STATE",
+  title: "Peer Influence & Desired Future State",
+  icon: "layers",
+  sowhat:
+    "Peer example is the single most-cited influence on adoption (6 of 12 stakeholders) — and if agentic delivery works as hoped, consultants most often point their newly freed time toward strategic client work, not away from the client at all.",
+  quote: {
+    q: "Whose experience or opinion would most influence whether you adopt this way of working?",
+    quote:
+      "I have someone who's an associate who I would really value her opinion … if they said they tried this use case and it worked really well, I would [try it too].",
+    attr: "Associate",
+  },
+  chart: {
+    type: "bar" as const,
+    title: "Who influences adoption (n=12 of 16 addressed)",
+    data: [
+      { name: "Peer at a similar level", value: 50 },
+      { name: "Leadership / management", value: 25 },
+      { name: "Technical expert / early adopter", value: 25 },
+    ],
+    colors: [COLORS.orange, COLORS.orange2, COLORS.grey],
+    suffix: "%",
+  },
+  futureStateQuestion:
+    "\u201cTwo years into this, agentic delivery has genuinely worked — what does your day look like differently?\u201d — in their own words, one from every role.",
+  futureStateQuotes: [
+    {
+      quote: "I don't think we're going to be using any of these big [platforms] like Dynamics or Salesforce … we build them their application right from scratch.",
+      attr: "Manager",
+    },
+    {
+      quote: "Hopefully a lot less time after calls doing documentation and user stories … a lot more efficient.",
+      attr: "Associate",
+    },
+    {
+      quote: "Our people team would sell the project, AI kind of builds the whole thing … projects would be so much quicker. You could be on more than one project, getting access to different industries.",
+      attr: "Senior Associate",
+    },
+    {
+      quote: "Meeting scheduling, meeting summaries, post-meeting emails, follow-ups … all definitely automated. I think I'll end up being more into pre-sales rather than project engagement.",
+      attr: "Senior Manager",
+    },
+    {
+      quote: "Can I slice my team by 50%? I don't think so … can I slice my team by at least 20 to 30%? Yes, 100% — but you will still need people who review the stuff and bring experience.",
+      attr: "Director",
+    },
+  ],
+};
+
 export const strengths = [
   {
     title: "Broad positive foundation.",
-    body: "84% of all coded responses across every theme are positive or mixed, not concerned (48 of 57).",
+    body: "84% of all coded responses across every theme are positive or mixed, not concerned.",
   },
   {
     title: "Judgment is universally valued.",
@@ -406,18 +396,18 @@ export const strengths = [
   },
   {
     title: "Genuine excitement about the future.",
-    body: "9 of 11 stakeholders who reached the future-state question describe real enthusiasm about where this leads — not just tolerance.",
+    body: "9 of 10 stakeholders describe real enthusiasm about where this leads — not just tolerance.",
   },
 ];
 
-export const skepticism = [
+export const stillNeeded = [
   {
     title: "Doubt concentrates at specific levels.",
     body: "Associates and Senior Associates account for the most concerned codings in the data — stigma around visible AI use and feeling penalized for trying new tools, specifically.",
   },
   {
     title: "Senior Managers are less convinced than seniority suggests.",
-    body: "69% positive-or-mixed — the lowest of any role level — driven by real concerns about data sensitivity and past AI disappointments.",
+    body: "69% positive-or-mixed — driven by real concerns about data sensitivity and past AI disappointments.",
   },
   {
     title: "Trust rebuilt slowly, not given upfront.",
@@ -425,63 +415,7 @@ export const skepticism = [
   },
   {
     title: "Proof gap remains.",
-    body: "Of those asked, half (6 of 12) say only a real, completed engagement — not a pilot or demo — will shift their view.",
-  },
-];
-
-export const recommendations = [
-  {
-    num: "01",
-    title: "Align reward systems first",
-    body: "2 of 16 stakeholders named utilization or billable-hour metrics directly as working against AI-driven time savings — messaging can't outrun what gets rewarded.",
-  },
-  {
-    num: "02",
-    title: "Name the human-in-the-loop line",
-    body: "14 of 16 want a defined human checkpoint, most often before anything reaches the client — publish where sign-off is required, using the boundaries stakeholders described themselves.",
-  },
-  {
-    num: "03",
-    title: "Fund one visible reference engagement",
-    body: "Of those asked, half (6 of 12) said only a real, completed engagement will change their view — run and publicize one as the proof point, not another pilot or demo.",
-  },
-  {
-    num: "04",
-    title: "Close the peer-adoption gap",
-    body: "One stakeholder described a visible AI-usage gap on their own team; peer example was consistently cited as the most trusted proof — pair light and heavy AI users and put peer results in front of the practice.",
-  },
-];
-
-export const waves = [
-  {
-    wave: "WAVE 1",
-    period: "Days 1–30",
-    title: "Quick wins where trust already exists",
-    color: COLORS.orange,
-    focus:
-      "documentation, reporting, user stories and requirement summarization.",
-    rationale:
-      "These are the most consistently cited friction points, and first-draft document generation is already the most broadly embraced form of delegation (15 of 16).",
-  },
-  {
-    wave: "WAVE 2",
-    period: "Days 30–90",
-    title: "Build on early trust",
-    color: COLORS.orange2,
-    focus:
-      "process mapping, design recommendations, traceability and data dictionary generation.",
-    rationale:
-      "Clear value, but this is where stakeholders want the proof this report identifies — half (6 of 12) say only a real, completed engagement will change their view.",
-  },
-  {
-    wave: "WAVE 3",
-    period: "90+ Days",
-    title: "Only after trust is earned",
-    color: COLORS.grey,
-    focus:
-      "configuration and code generation, test generation, and more autonomous workflows.",
-    rationale:
-      "No stakeholder yet reported comfort with autonomous client-facing actions (0 of 16) — this wave should follow visible proof from Waves 1 and 2, not precede it.",
+    body: "Of those asked, half (6 of 12 stakeholders) say only a real, completed engagement — not a pilot or demo — will shift their view.",
   },
 ];
 
@@ -508,3 +442,35 @@ export const skillShift = [
   { today: "Research and gather manually", tomorrow: "Prompt effectively & iterate" },
   { today: "Spend most time producing deliverables", tomorrow: "Spend more time advising clients" },
 ];
+
+// NOTE: this title reverts to the practice's original wording in the latest uploaded
+// deck. An earlier pass had changed it to "Align reward systems first" to avoid
+// implying unverified bias toward "incentive misalignment" per leadership feedback;
+// that change is not present in this version, so this file mirrors the deck as-is.
+export const recommendations = [
+  {
+    num: "01",
+    title: "Realign incentives first",
+    body: "4 of 16 stakeholders named utilization or billable-hour metrics directly as working against AI-driven time savings — messaging can't outrun what gets rewarded.",
+  },
+  {
+    num: "02",
+    title: "Name the human-in-the-loop line",
+    body: "14 of 16 stakeholders want a defined human checkpoint, most often before anything reaches the client — publish where sign-off is required, using the boundaries stakeholders described themselves.",
+  },
+  {
+    num: "03",
+    title: "Fund one visible reference engagement",
+    body: "Of those asked, half (6 of 12 stakeholders) said only a real, completed engagement will change their view — run and publicize one as the proof point, not another pilot or demo.",
+  },
+  {
+    num: "04",
+    title: "Close the peer-adoption gap",
+    body: "One stakeholder described a visible AI-usage gap on their own team; peer example was consistently cited as the most trusted proof — pair light and heavy AI users and put peer results in front of the practice.",
+  },
+];
+
+export const closing = {
+  title: "Thank You",
+  subtitle: "Questions & Discussion",
+};

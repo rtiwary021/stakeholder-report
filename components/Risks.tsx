@@ -1,4 +1,4 @@
-import { strengths, skepticism } from "@/lib/data";
+import { strengths, stillNeeded } from "@/lib/data";
 import Reveal from "./Reveal";
 
 export default function Risks() {
@@ -7,7 +7,7 @@ export default function Risks() {
       <div className="max-w-content mx-auto px-8">
         <Reveal>
           <div className="text-orange font-bold text-xs tracking-[1.6px] mb-1.5">WHERE WE STAND TODAY</div>
-          <h2 className="text-[30px] mb-8">What&apos;s Working, and Where Skepticism Still Lives</h2>
+          <h2 className="text-[30px] mb-8">What&apos;s Working, and What Still Needs Attention</h2>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-5">
           <div>
@@ -27,10 +27,10 @@ export default function Risks() {
           </div>
           <div>
             <Reveal delay={60}>
-              <h3 className="text-muted text-[17px] mb-4">Where Skepticism Still Lives</h3>
+              <h3 className="text-muted text-[17px] mb-4">What We Still Need to Work Towards</h3>
             </Reveal>
             <div className="bg-card rounded-[10px] p-6 flex flex-col gap-5">
-              {skepticism.map((s, i) => (
+              {stillNeeded.map((s, i) => (
                 <Reveal key={s.title} delay={120 + i * 90}>
                   <div>
                     <span className="text-muted font-bold text-[14.5px]">{s.title} </span>

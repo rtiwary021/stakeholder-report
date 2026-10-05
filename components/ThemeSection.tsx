@@ -37,7 +37,7 @@ function QuoteCard({ q, quote, attr }: { q: string; quote: string; attr: string 
   const isLong = quote.length > 180;
   return (
     <div
-      className="bg-card rounded-[10px] p-5 mb-4 cursor-pointer transition-colors hover:bg-orange/5"
+      className="bg-card rounded-[10px] p-6 mb-4 cursor-pointer transition-colors hover:bg-orange/5"
       onClick={() => isLong && setExpanded((e) => !e)}
     >
       <div className="text-orange font-bold text-[14.5px] mb-2.5">Q. {q}</div>

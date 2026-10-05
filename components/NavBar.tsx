@@ -10,8 +10,8 @@ const SECTIONS = [
   { id: "wordcloud", label: "Voices" },
   { id: "themes", label: "Themes" },
   { id: "risks", label: "Risks" },
-  { id: "recommendations", label: "Recommendations" },
   { id: "messages", label: "Messaging" },
+  { id: "recommendations", label: "Recommendations" },
 ];
 
 export default function NavBar() {
