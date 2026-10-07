@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   BarChart,
   Bar,
@@ -32,7 +33,15 @@ function CustomTooltip({ active, payload, label }: any) {
   );
 }
 
+const SERIES = [
+  { key: "Positive", color: COLORS.orange },
+  { key: "Mixed", color: COLORS.orange2 },
+  { key: "Concerned", color: COLORS.grey },
+] as const;
+
 export default function Overview() {
+  const [hidden, setHidden] = useState<Record<string, boolean>>({});
+  const toggle = (key: string) => setHidden((h) => ({ ...h, [key]: !h[key] }));
   return (
     <section id="overview" className="py-16 scroll-mt-16">
       <div className="max-w-content mx-auto px-8">
@@ -55,12 +64,35 @@ export default function Overview() {
                   <XAxis dataKey="theme" tick={{ fontSize: 11 }} />
                   <YAxis tick={{ fontSize: 11 }} domain={[0, maxStack]} />
                   <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(0,0,0,0.03)" }} />
-                  <Legend wrapperStyle={{ fontSize: 12 }} />
-                  <Bar dataKey="Positive" stackId="a" fill={COLORS.orange} radius={[0, 0, 0, 0]} animationDuration={900} />
-                  <Bar dataKey="Mixed" stackId="a" fill={COLORS.orange2} animationDuration={900} animationBegin={150} />
-                  <Bar dataKey="Concerned" stackId="a" fill={COLORS.grey} radius={[4, 4, 0, 0]} animationDuration={900} animationBegin={300} />
+                  {SERIES.map((s, i) => (
+                    <Bar
+                      key={s.key}
+                      dataKey={s.key}
+                      stackId="a"
+                      fill={s.color}
+                      hide={hidden[s.key]}
+                      animationDuration={900}
+                      animationBegin={i * 150}
+                    />
+                  ))}
                 </BarChart>
               </ResponsiveContainer>
+              <div className="flex flex-wrap justify-center gap-2 mt-2" aria-label="Toggle sentiment series">
+                {SERIES.map((s) => (
+                  <button
+                    key={s.key}
+                    type="button"
+                    aria-pressed={!hidden[s.key]}
+                    onClick={() => toggle(s.key)}
+                    className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-[12px] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange ${
+                      hidden[s.key] ? "border-hairline text-muted opacity-60 line-through" : "border-hairline hover:border-orange2"
+                    }`}
+                  >
+                    <span className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: s.color }} aria-hidden="true" />
+                    {s.key}
+                  </button>
+                ))}
+              </div>
             </div>
           </Reveal>
 

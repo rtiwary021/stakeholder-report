@@ -17,7 +17,7 @@ export default function ExecSummary() {
             <div className="bg-[#FFF4ED] rounded-[10px] p-6 flex flex-col gap-5">
               {strengths.map((s, i) => (
                 <Reveal key={s.title} delay={i * 90}>
-                  <div>
+                  <div className="rounded-md -mx-2 px-2 py-1 transition-colors duration-200 hover:bg-white/70">
                     <span className="text-orange font-bold text-[14.5px]">{s.title}. </span>
                     <span className="text-[14.5px]">{s.body}</span>
                   </div>
@@ -35,7 +35,7 @@ export default function ExecSummary() {
             <div className="bg-card rounded-[10px] p-6 flex flex-col gap-5">
               {stillNeeded.map((s, i) => (
                 <Reveal key={s.title} delay={120 + i * 90}>
-                  <div>
+                  <div className="rounded-md -mx-2 px-2 py-1 transition-colors duration-200 hover:bg-white/70">
                     <span className="text-muted font-bold text-[14.5px]">{s.title}. </span>
                     <span className="text-[14.5px]">{s.body}</span>
                   </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   ScatterChart,
   Scatter,
@@ -36,7 +37,13 @@ type Point = {
 };
 
 function Bubble(props: any) {
-  const { cx, cy, payload } = props as { cx: number; cy: number; payload: Point };
+  const { cx, cy, payload, focus, onFocus } = props as {
+    cx: number;
+    cy: number;
+    payload: Point;
+    focus: (p: Point) => "on" | "off" | "none";
+    onFocus: (role: string | null) => void;
+  };
   if (cx == null || cy == null) return null;
   const r = radiusFor(payload.size);
   const assessed = Boolean(payload.color);
@@ -44,9 +51,20 @@ function Bubble(props: any) {
   const lx = labelLeft ? cx - r - 8 : cx + r + 8;
   const anchor = labelLeft ? "end" : "start";
   const name = assessed ? payload.role : "P/MD (not interviewed – provisional)";
+  const state = focus(payload);
 
   return (
-    <g style={{ cursor: "pointer" }}>
+    <g
+      style={{
+        cursor: "pointer",
+        opacity: state === "off" ? 0.2 : 1,
+        transform: state === "on" ? "scale(1.06)" : "scale(1)",
+        transformOrigin: `${cx}px ${cy}px`,
+        transition: "opacity 250ms ease, transform 250ms ease",
+      }}
+      onMouseEnter={() => onFocus(payload.role)}
+      onMouseLeave={() => onFocus(null)}
+    >
       {assessed ? (
         <>
           <circle cx={cx} cy={cy} r={r + 6} fill={payload.color} opacity={0.18} />
@@ -104,8 +122,22 @@ export default function HeatMap() {
     heatMapPMD,
   ];
 
+  const [hoverRole, setHoverRole] = useState<string | null>(null);
+  const [stageFilter, setStageFilter] = useState<string | null>(null);
+
+  const matchesStage = (p: Point) =>
+    stageFilter === null || (stageFilter === "__none" ? !p.color : p.color === stageFilter);
+
+  const focus = (p: Point): "on" | "off" | "none" => {
+    if (hoverRole) return p.role === hoverRole ? "on" : "off";
+    if (stageFilter !== null) return matchesStage(p) ? "on" : "off";
+    return "none";
+  };
+
+  const shape = (props: any) => <Bubble {...props} focus={focus} onFocus={setHoverRole} />;
+
   return (
-    <section className="py-16 border-t border-hairline scroll-mt-16">
+    <section id="heatmap" className="py-16 border-t border-hairline scroll-mt-16">
       <div className="max-w-content mx-auto px-8">
         <Reveal>
           <div className="text-orange font-bold text-xs tracking-[1.6px] mb-1.5">{heatMapMeta.eyebrow}</div>
@@ -116,13 +148,28 @@ export default function HeatMap() {
           <div className="bg-white border border-hairline rounded-[10px] p-5 md:p-6 shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
               <div className="text-[12px] font-bold tracking-[1.2px] text-muted uppercase">Change-curve stage today</div>
-              <ul className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                {heatMapStages.map((s) => (
-                  <li key={s.label} className="flex items-center gap-1.5 text-[12.5px]">
-                    <StageDot color={s.color} />
-                    {s.label}
-                  </li>
-                ))}
+              <ul className="flex flex-wrap items-center gap-2" aria-label="Filter by change-curve stage">
+                {heatMapStages.map((s) => {
+                  const key = s.color ?? "__none";
+                  const selected = stageFilter === key;
+                  return (
+                    <li key={s.label}>
+                      <button
+                        type="button"
+                        aria-pressed={selected}
+                        onClick={() => setStageFilter(selected ? null : key)}
+                        className={`flex items-center gap-1.5 text-[12.5px] rounded-full border px-3 py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange ${
+                          selected
+                            ? "border-body bg-body text-white"
+                            : "border-hairline bg-white hover:border-orange2"
+                        }`}
+                      >
+                        <StageDot color={s.color} />
+                        {s.label}
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -165,8 +212,8 @@ export default function HeatMap() {
                   />
                 </YAxis>
                 <Tooltip content={<BubbleTooltip />} cursor={false} />
-                <Scatter data={[heatMapPMD]} shape={<Bubble />} isAnimationActive={false} />
-                <Scatter data={heatMapBubbles} shape={<Bubble />} />
+                <Scatter data={[heatMapPMD]} shape={shape} isAnimationActive={false} />
+                <Scatter data={heatMapBubbles} shape={shape} />
               </ScatterChart>
             </ResponsiveContainer>
 
@@ -181,7 +228,17 @@ export default function HeatMap() {
           <h3 className="font-bold text-base mt-8 mb-4">What the interviews tell us</h3>
           <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {roleNotes.map((r) => (
-              <li key={r.role} className="bg-card rounded-[10px] p-5 flex flex-col gap-2 h-full">
+              <li
+                key={r.role}
+                tabIndex={0}
+                onMouseEnter={() => setHoverRole(r.role)}
+                onMouseLeave={() => setHoverRole(null)}
+                onFocus={() => setHoverRole(r.role)}
+                onBlur={() => setHoverRole(null)}
+                className={`bg-card rounded-[10px] p-5 flex flex-col gap-2 h-full border transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-orange ${
+                  hoverRole === r.role ? "border-orange2 bg-white shadow-md -translate-y-0.5" : "border-transparent"
+                } ${focus(r) === "off" ? "opacity-50" : "opacity-100"}`}
+              >
                 <div className="flex items-center gap-2.5">
                   <StageDot color={r.color} size="w-3.5 h-3.5" />
                   <span className="font-bold text-[14px]">{r.role}</span>

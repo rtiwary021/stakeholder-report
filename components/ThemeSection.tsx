@@ -12,6 +12,7 @@ import {
   PieChart,
   Pie,
   Legend,
+  LabelList,
   ResponsiveContainer,
 } from "recharts";
 import { ThemeSectionData } from "@/lib/data";
@@ -37,8 +38,19 @@ function QuoteCard({ q, quote, attr }: { q: string; quote: string; attr: string 
   const isLong = quote.length > 180;
   return (
     <div
-      className="bg-card rounded-[10px] p-6 flex-1 flex flex-col cursor-pointer transition-colors hover:bg-orange/5"
+      className={`bg-card rounded-[10px] p-6 flex-1 flex flex-col transition-colors hover:bg-orange/5 outline-none focus-visible:ring-2 focus-visible:ring-orange ${
+        isLong ? "cursor-pointer" : ""
+      }`}
+      role={isLong ? "button" : undefined}
+      tabIndex={isLong ? 0 : undefined}
+      aria-expanded={isLong ? expanded : undefined}
       onClick={() => isLong && setExpanded((e) => !e)}
+      onKeyDown={(e) => {
+        if (isLong && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          setExpanded((v) => !v);
+        }
+      }}
     >
       <div className="text-orange font-bold text-[14.5px] mb-2.5">Q. {q}</div>
       <blockquote
@@ -61,28 +73,66 @@ function QuoteCard({ q, quote, attr }: { q: string; quote: string; attr: string 
 type ChartSpec = NonNullable<ThemeSectionData["chart"]>;
 
 function ChartBox({ chart, delay }: { chart: ChartSpec; delay: number }) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const opacityFor = (i: number) => (activeIndex === null || activeIndex === i ? 1 : 0.35);
   return (
     <Reveal delay={delay} className="flex-1 flex">
       <div className="flex-1 flex flex-col justify-center bg-white border border-hairline rounded-[10px] p-6 transition-shadow duration-300 hover:shadow-md">
         <div className="text-sm text-center font-bold mb-2">{chart.title}</div>
         <ResponsiveContainer width="100%" height={260}>
           {chart.type === "bar" ? (
-            <BarChart data={chart.data} layout="vertical" margin={{ top: 5, right: 30, left: 10, bottom: 5 }}>
+            <BarChart
+              data={chart.data}
+              layout="vertical"
+              margin={{ top: 5, right: 44, left: 10, bottom: 5 }}
+              onMouseLeave={() => setActiveIndex(null)}
+            >
               <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#EBEBEB" />
               <XAxis type="number" tick={{ fontSize: 11 }} tickFormatter={(v) => `${v}${chart.suffix || ""}`} />
               <YAxis type="category" dataKey="name" width={150} tick={{ fontSize: 11 }} />
               <Tooltip content={<BarTooltip suffix={chart.suffix} />} cursor={{ fill: "rgba(0,0,0,0.03)" }} />
-              <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={24} animationDuration={800}>
-                {chart.colors
-                  ? chart.data.map((_, i) => <Cell key={i} fill={chart.colors![i % chart.colors!.length]} />)
-                  : chart.data.map((_, i) => <Cell key={i} fill={chart.color} />)}
+              <Bar
+                dataKey="value"
+                radius={[0, 4, 4, 0]}
+                barSize={24}
+                animationDuration={800}
+                onMouseEnter={(_, i) => setActiveIndex(i)}
+              >
+                {chart.data.map((_, i) => (
+                  <Cell
+                    key={i}
+                    fill={chart.colors ? chart.colors[i % chart.colors.length] : chart.color}
+                    fillOpacity={opacityFor(i)}
+                    style={{ transition: "fill-opacity 200ms ease" }}
+                  />
+                ))}
+                <LabelList
+                  dataKey="value"
+                  position="right"
+                  formatter={(v: number) => `${v}${chart.suffix || ""}`}
+                  style={{ fontSize: 11, fontWeight: 700, fill: "#2B2B2B" }}
+                />
               </Bar>
             </BarChart>
           ) : (
-            <PieChart>
-              <Pie data={chart.data} dataKey="value" nameKey="name" innerRadius={55} outerRadius={95} paddingAngle={2} animationDuration={800}>
+            <PieChart onMouseLeave={() => setActiveIndex(null)}>
+              <Pie
+                data={chart.data}
+                dataKey="value"
+                nameKey="name"
+                innerRadius={55}
+                outerRadius={95}
+                paddingAngle={2}
+                animationDuration={800}
+                onMouseEnter={(_, i) => setActiveIndex(i)}
+              >
                 {chart.data.map((_, i) => (
-                  <Cell key={i} fill={chart.colors?.[i % (chart.colors?.length || 1)]} />
+                  <Cell
+                    key={i}
+                    fill={chart.colors?.[i % (chart.colors?.length || 1)]}
+                    fillOpacity={opacityFor(i)}
+                    style={{ transition: "fill-opacity 200ms ease" }}
+                  />
                 ))}
               </Pie>
               <Tooltip content={<BarTooltip />} />

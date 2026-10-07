@@ -3,13 +3,21 @@ import Reveal from "./Reveal";
 
 function SkillRow({ rank, name, desc, count }: { rank: number; name: string; desc: string; count: number }) {
   return (
-    <div className="flex items-start gap-3 py-2 border-b border-hairline last:border-0">
+    <div className="group flex items-start gap-3 py-2.5 px-2 -mx-2 rounded-md border-b border-hairline last:border-0 transition-colors duration-200 hover:bg-white/70">
       <div className="font-serif font-bold text-orange text-lg w-6 shrink-0">{rank}</div>
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <div className="font-bold text-[13.5px]">{name}</div>
         <div className="text-[12px] text-muted">{desc}</div>
+        <div className="h-1 mt-2 rounded-full bg-hairline overflow-hidden" aria-hidden="true">
+          <div
+            className="h-full rounded-full bg-orange2 transition-all duration-300 group-hover:bg-orange"
+            style={{ width: `${(count / 18) * 100}%` }}
+          />
+        </div>
       </div>
-      <div className="text-[13px] font-bold text-muted whitespace-nowrap">{count}/18</div>
+      <div className="text-[13px] font-bold text-muted whitespace-nowrap tabular-nums transition-colors group-hover:text-orange">
+        {count}/18
+      </div>
     </div>
   );
 }

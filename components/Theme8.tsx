@@ -1,6 +1,7 @@
 "use client";
 
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, ResponsiveContainer } from "recharts";
+import { useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, LabelList, ResponsiveContainer } from "recharts";
 import { theme8 } from "@/lib/data";
 import { Icon } from "./Icon";
 import Reveal from "./Reveal";
@@ -17,6 +18,7 @@ function BarTooltip({ active, payload }: any) {
 }
 
 export default function Theme8() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   return (
     <section className="py-16 border-t border-hairline scroll-mt-16">
       <div className="max-w-content mx-auto px-8">
@@ -49,15 +51,37 @@ export default function Theme8() {
             <div className="flex-1 flex flex-col justify-center bg-white border border-hairline rounded-[10px] p-6 transition-shadow duration-300 hover:shadow-md">
               <div className="text-sm text-center font-bold mb-2">{theme8.chart.title}</div>
               <ResponsiveContainer width="100%" height={260}>
-                <BarChart data={theme8.chart.data} layout="vertical" margin={{ top: 5, right: 30, left: 10, bottom: 5 }}>
+                <BarChart
+                  data={theme8.chart.data}
+                  layout="vertical"
+                  margin={{ top: 5, right: 44, left: 10, bottom: 5 }}
+                  onMouseLeave={() => setActiveIndex(null)}
+                >
                   <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#EBEBEB" />
                   <XAxis type="number" tick={{ fontSize: 11 }} tickFormatter={(v) => `${v}%`} />
                   <YAxis type="category" dataKey="name" width={150} tick={{ fontSize: 11 }} />
                   <Tooltip content={<BarTooltip />} cursor={{ fill: "rgba(0,0,0,0.03)" }} />
-                  <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={24} animationDuration={800}>
+                  <Bar
+                    dataKey="value"
+                    radius={[0, 4, 4, 0]}
+                    barSize={24}
+                    animationDuration={800}
+                    onMouseEnter={(_, i) => setActiveIndex(i)}
+                  >
                     {theme8.chart.data.map((_, i) => (
-                      <Cell key={i} fill={theme8.chart.colors[i % theme8.chart.colors.length]} />
+                      <Cell
+                        key={i}
+                        fill={theme8.chart.colors[i % theme8.chart.colors.length]}
+                        fillOpacity={activeIndex === null || activeIndex === i ? 1 : 0.35}
+                        style={{ transition: "fill-opacity 200ms ease" }}
+                      />
                     ))}
+                    <LabelList
+                      dataKey="value"
+                      position="right"
+                      formatter={(v: number) => `${v}%`}
+                      style={{ fontSize: 11, fontWeight: 700, fill: "#2B2B2B" }}
+                    />
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
@@ -74,7 +98,11 @@ export default function Theme8() {
         <div className="flex flex-col">
           {theme8.futureStateQuotes.map((q, i) => (
             <Reveal key={q.attr} delay={320 + i * 70}>
-              <div className={`px-5 py-3 text-[14.5px] ${i % 2 === 0 ? "bg-card" : "bg-white"}`}>
+              <div
+                className={`px-5 py-3 text-[14.5px] transition-colors duration-200 hover:bg-orange/5 ${
+                  i % 2 === 0 ? "bg-card" : "bg-white"
+                }`}
+              >
                 <span className="italic">&ldquo;{q.quote}&rdquo;</span>{" "}
                 <span className="text-muted italic text-[13px]">— {q.attr}</span>
               </div>
