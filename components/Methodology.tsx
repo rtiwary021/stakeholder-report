@@ -26,7 +26,7 @@ const rolePercentages = roleBreakdown.map((r) => ({
 
 function renderPctLabel({ cx, cy, midAngle, innerRadius, outerRadius, payload }: any) {
   const RADIAN = Math.PI / 180;
-  const radius = innerRadius + (outerRadius - innerRadius) / 2;
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.65;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
   return (
@@ -83,7 +83,7 @@ export default function Methodology() {
               <h3 className="text-orange text-lg mb-3.5">Stakeholder Roles Interviewed</h3>
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart>
-                  <Pie data={rolePercentages} dataKey="count" nameKey="role" innerRadius={50} outerRadius={90} paddingAngle={2} animationDuration={800} label={renderPctLabel} labelLine={false}>
+                  <Pie data={rolePercentages} dataKey="count" nameKey="role" innerRadius={0} outerRadius={100} stroke="#ffffff" strokeWidth={2} animationDuration={800} label={renderPctLabel} labelLine={false}>
                     {rolePercentages.map((_, i) => (
                       <Cell key={i} fill={ROLE_COLORS[i % ROLE_COLORS.length]} />
                     ))}
