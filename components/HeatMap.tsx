@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   ScatterChart,
   Scatter,
@@ -134,7 +134,14 @@ export default function HeatMap() {
     return "none";
   };
 
-  const shape = (props: any) => <Bubble {...props} focus={focus} onFocus={setHoverRole} />;
+  // Recharts remounts shapes when the `shape` prop identity changes, which re-triggers
+  // mouseenter on hover and loops. Keep the renderer stable and read latest focus via a ref.
+  const focusRef = useRef(focus);
+  focusRef.current = focus;
+  const shape = useCallback(
+    (props: any) => <Bubble {...props} focus={(p: Point) => focusRef.current(p)} onFocus={setHoverRole} />,
+    [],
+  );
 
   return (
     <section id="heatmap" className="py-16 border-t border-hairline scroll-mt-16">
@@ -213,7 +220,7 @@ export default function HeatMap() {
                 </YAxis>
                 <Tooltip content={<BubbleTooltip />} cursor={false} />
                 <Scatter data={[heatMapPMD]} shape={shape} isAnimationActive={false} />
-                <Scatter data={heatMapBubbles} shape={shape} />
+                <Scatter data={heatMapBubbles} shape={shape} isAnimationActive={false} />
               </ScatterChart>
             </ResponsiveContainer>
 
