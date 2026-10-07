@@ -19,6 +19,13 @@ function BubbleTooltip({ active, payload }: any) {
 export default function HeatMap() {
   const data = heatMapBubbles.map((b) => ({ ...b, z: b.size }));
   const pmdData = [{ ...heatMapPMD, z: heatMapPMD.size }];
+  const pdfOrder = ["Associates", "Sr. Associates", "Managers", "Sr. Managers", "Directors"];
+  const roleNotes: { role: string; desc: string; color?: string }[] = [
+    ...pdfOrder
+      .map((name) => heatMapBubbles.find((b) => b.role === name))
+      .filter((b): b is (typeof heatMapBubbles)[number] => Boolean(b)),
+    heatMapPMD,
+  ];
 
   return (
     <section className="py-16 border-t border-hairline scroll-mt-16">
@@ -59,6 +66,12 @@ export default function HeatMap() {
                     {b.role}<br /><span className="font-normal text-[10px]">n={b.n}</span>
                   </div>
                 ))}
+                <div
+                  className="absolute text-muted text-[10px] font-bold text-center -translate-x-1/2 -translate-y-1/2 leading-tight whitespace-nowrap"
+                  style={{ left: `${(heatMapPMD.x / 10) * 100}%`, top: `${(1 - heatMapPMD.y / 10) * 82 + 3}%` }}
+                >
+                  P/MD (not interviewed – provisional)<br /><span className="font-normal">n={heatMapPMD.n}</span>
+                </div>
               </div>
             </div>
             <div className="mt-3 text-[12px] text-muted italic">{heatMapMeta.sizeLegendLabel}</div>
@@ -80,12 +93,30 @@ export default function HeatMap() {
                 ))}
               </div>
             </div>
+            <div className="bg-card rounded-[10px] p-5 mt-4">
+              <div className="font-bold text-sm mb-3">What the interviews tell us</div>
+              <dl className="flex flex-col gap-3">
+                {roleNotes.map((r) => (
+                  <div key={r.role} className="flex gap-2.5">
+                    {r.color ? (
+                      <span className="w-2.5 h-2.5 rounded-full shrink-0 mt-1.5" style={{ backgroundColor: r.color }} aria-hidden="true" />
+                    ) : (
+                      <span className="w-2.5 h-2.5 rounded-full shrink-0 mt-1.5 border-2 border-dashed border-[#A1A8B3]" aria-hidden="true" />
+                    )}
+                    <div>
+                      <dt className="text-[13px] font-bold">{r.role}</dt>
+                      <dd className="text-[12.5px] text-muted leading-relaxed">{r.desc}</dd>
+                    </div>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </Reveal>
         </div>
 
         <Reveal delay={280}>
           <div className="bg-[#2B2B2B] text-white rounded-lg px-5 py-4 mt-7 text-[14.5px]">
-            <b className="inline-block tracking-[1.2px] text-xs mr-2.5 text-orange">SO WHAT</b>
+            <b className="inline-block tracking-[1.2px] text-xs mr-2.5 text-orange">KEY TAKEAWAY</b>
             {heatMapMeta.soWhat}
           </div>
           <p className="text-[11px] text-muted italic mt-3">{heatMapMeta.source}</p>
