@@ -18,7 +18,6 @@ export const meta = {
   roleLevels: 5,
   clusters: 8,
   avgDuration: "26 min",
-  practiceOffice: "Practice Transformation Office",
 };
 
 export const methodologyOverview =

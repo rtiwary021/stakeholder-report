@@ -34,7 +34,7 @@ export default function Hero() {
           {meta.title}
         </h1>
         <div className="text-sm text-muted border-t border-black/10 pt-4 inline-block animate-in" style={{ animationDelay: "0.2s" }}>
-          {meta.practiceOffice} &nbsp;|&nbsp; {meta.date}
+          {meta.date}
         </div>
       </div>
     </section>
