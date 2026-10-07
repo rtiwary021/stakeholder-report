@@ -18,6 +18,24 @@ const CLUSTERS = [
 
 const ROLE_COLORS = [COLORS.orange3, COLORS.orange2, COLORS.orange, COLORS.grey, COLORS.grey4];
 
+const ROLE_TOTAL = roleBreakdown.reduce((sum, r) => sum + r.count, 0);
+const rolePercentages = roleBreakdown.map((r) => ({
+  ...r,
+  pct: Math.round((r.count / ROLE_TOTAL) * 100),
+}));
+
+function renderPctLabel({ cx, cy, midAngle, innerRadius, outerRadius, payload }: any) {
+  const RADIAN = Math.PI / 180;
+  const radius = innerRadius + (outerRadius - innerRadius) / 2;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+  return (
+    <text x={x} y={y} fill="#fff" textAnchor="middle" dominantBaseline="central" fontSize={12} fontWeight={700}>
+      {`${payload.pct}%`}
+    </text>
+  );
+}
+
 function StatCard({ num, label, delay = 0 }: { num: string; label: string; delay?: number }) {
   return (
     <Reveal delay={delay}>
@@ -36,7 +54,7 @@ function RoleTooltip({ active, payload }: any) {
   const p = payload[0];
   return (
     <div className="bg-white border border-hairline rounded-lg px-3 py-2 shadow-lg text-sm">
-      <span className="font-bold">{p.name}</span>: {p.value}
+      <span className="font-bold">{p.name}</span>: {p.payload.pct}%
     </div>
   );
 }
@@ -65,13 +83,16 @@ export default function Methodology() {
               <h3 className="text-orange text-lg mb-3.5">Stakeholder Roles Interviewed</h3>
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart>
-                  <Pie data={roleBreakdown} dataKey="count" nameKey="role" innerRadius={50} outerRadius={90} paddingAngle={2} animationDuration={800}>
-                    {roleBreakdown.map((_, i) => (
+                  <Pie data={rolePercentages} dataKey="count" nameKey="role" innerRadius={50} outerRadius={90} paddingAngle={2} animationDuration={800} label={renderPctLabel} labelLine={false}>
+                    {rolePercentages.map((_, i) => (
                       <Cell key={i} fill={ROLE_COLORS[i % ROLE_COLORS.length]} />
                     ))}
                   </Pie>
                   <Tooltip content={<RoleTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 12 }} />
+                  <Legend
+                    wrapperStyle={{ fontSize: 12 }}
+                    formatter={(value: string, entry: any) => `${value} (${entry.payload.pct}%)`}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </div>
