@@ -166,6 +166,17 @@ export const themes: ThemeSectionData[] = [
       color: COLORS.orange2,
       suffix: "%",
     },
+    chart2: {
+      type: "bar",
+      title: "Reaction to agents generating requirements & designs (n=18)",
+      data: [
+        { name: "Mixed", value: 44 },
+        { name: "Excited", value: 28 },
+        { name: "Concerned", value: 28 },
+      ],
+      colors: [COLORS.orange2, COLORS.orange, COLORS.grey],
+      suffix: "%",
+    },
   },
   {
     eyebrow: "THEME 3 — ROLE IMPACT & EXPERTISE EVOLUTION",
@@ -222,7 +233,7 @@ export const themes: ThemeSectionData[] = [
     ],
     chart: {
       type: "bar",
-      title: "Comfort delegating to an agent (% of 18 respondents)",
+      title: "Comfort delegating to an agent (n=18, explicit mentions)",
       data: [
         { name: "First-draft docs", value: 94 },
         { name: "Config & technical changes", value: 28 },
@@ -255,12 +266,12 @@ export const themes: ThemeSectionData[] = [
     ],
     chart: {
       type: "bar",
-      title: "Where freed capacity should go (% of 18 respondents)",
+      title: "Where freed capacity should go (n=18, multi-mention)",
       data: [
         { name: "Client-facing time & relationships", value: 50 },
         { name: "Upskilling & learning", value: 28 },
-        { name: "Business development", value: 22 },
         { name: "Quality & testing", value: 22 },
+        { name: "Business development", value: 22 },
       ],
       color: COLORS.orange2,
       suffix: "%",
@@ -417,11 +428,11 @@ export const stillNeeded = [
     body: "Associates and Sr. Associates hold the most concern.",
   },
   {
-    title: "Senior Managers are less convinced than seniority suggests.",
-    body: "73% positive-or-mixed — driven by real concerns about data sensitivity and past AI disappointments.",
+    title: "Sr. Managers less convinced than seniority suggests.",
+    body: "73% positive-or-mixed, driven by real concerns about data sensitivity and past AI disappointments.",
   },
   {
-    title: "Trust rebuilt slowly, not given upfront.",
+    title: "Trust is built slowly, not given upfront.",
     body: "Several stakeholders cited past AI tools that overpromised and underdelivered, and remain cautious as a result.",
   },
   {
