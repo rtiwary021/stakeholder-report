@@ -1,26 +1,103 @@
 "use client";
 
-import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, Label } from "recharts";
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Label,
+  ReferenceArea,
+  ReferenceLine,
+} from "recharts";
 import { heatMapMeta, heatMapBubbles, heatMapPMD, heatMapStages } from "@/lib/data";
 import Reveal from "./Reveal";
 
+const NOT_ASSESSED = "#A1A8B3";
+const INK = "#2B2B2B";
+const MUTED = "#6E6E6E";
+
+const sizes = [...heatMapBubbles.map((b) => b.size), heatMapPMD.size];
+const minSize = Math.min(...sizes);
+const maxSize = Math.max(...sizes);
+const radiusFor = (size: number) => 18 + ((size - minSize) / (maxSize - minSize || 1)) * 22;
+
+type Point = {
+  role: string;
+  n: number;
+  x: number;
+  y: number;
+  size: number;
+  color?: string;
+  stage?: string;
+  desc: string;
+};
+
+function Bubble(props: any) {
+  const { cx, cy, payload } = props as { cx: number; cy: number; payload: Point };
+  if (cx == null || cy == null) return null;
+  const r = radiusFor(payload.size);
+  const assessed = Boolean(payload.color);
+  const labelLeft = payload.x >= 8;
+  const lx = labelLeft ? cx - r - 8 : cx + r + 8;
+  const anchor = labelLeft ? "end" : "start";
+  const name = assessed ? payload.role : "P/MD (not interviewed – provisional)";
+
+  return (
+    <g style={{ cursor: "pointer" }}>
+      {assessed ? (
+        <>
+          <circle cx={cx} cy={cy} r={r + 6} fill={payload.color} opacity={0.18} />
+          <circle cx={cx} cy={cy} r={r} fill={payload.color} stroke="#FFFFFF" strokeWidth={2.5} />
+          <text x={cx} y={cy} dy="0.35em" textAnchor="middle" fill="#FFFFFF" fontSize={13} fontWeight={700}>
+            {payload.n}
+          </text>
+        </>
+      ) : (
+        <>
+          <circle cx={cx} cy={cy} r={r} fill="#FFFFFF" stroke={NOT_ASSESSED} strokeWidth={2} strokeDasharray="4 3" />
+          <text x={cx} y={cy} dy="0.35em" textAnchor="middle" fill={MUTED} fontSize={12} fontWeight={700}>
+            {payload.n}
+          </text>
+        </>
+      )}
+      <text x={lx} y={cy - 3} textAnchor={anchor} fill={assessed ? INK : MUTED} fontSize={12.5} fontWeight={700}>
+        {name}
+      </text>
+      <text x={lx} y={cy + 13} textAnchor={anchor} fill={MUTED} fontSize={11}>
+        {`n=${payload.n}`}
+      </text>
+    </g>
+  );
+}
+
 function BubbleTooltip({ active, payload }: any) {
   if (!active || !payload || !payload.length) return null;
-  const p = payload[0].payload;
+  const p = payload[0].payload as Point;
   return (
     <div className="bg-white border border-hairline rounded-lg px-3 py-2 shadow-lg text-sm max-w-[260px]">
-      <div className="font-bold" style={{ color: p.color || "#6E6E6E" }}>{p.role} (n={p.n})</div>
+      <div className="font-bold" style={{ color: p.color || MUTED }}>
+        {p.role} (n={p.n})
+      </div>
       {p.stage && <div className="text-xs text-muted italic mb-1">{p.stage}</div>}
-      <div className="text-xs">{p.desc}</div>
+      <div className="text-xs leading-relaxed">{p.desc}</div>
     </div>
   );
 }
 
+function StageDot({ color, size = "w-3 h-3" }: { color?: string | null; size?: string }) {
+  return color ? (
+    <span className={`${size} rounded-full shrink-0`} style={{ backgroundColor: color }} aria-hidden="true" />
+  ) : (
+    <span className={`${size} rounded-full shrink-0 border-2 border-dashed border-[#A1A8B3]`} aria-hidden="true" />
+  );
+}
+
 export default function HeatMap() {
-  const data = heatMapBubbles.map((b) => ({ ...b, z: b.size }));
-  const pmdData = [{ ...heatMapPMD, z: heatMapPMD.size }];
   const pdfOrder = ["Associates", "Sr. Associates", "Managers", "Sr. Managers", "Directors"];
-  const roleNotes: { role: string; desc: string; color?: string }[] = [
+  const roleNotes: Point[] = [
     ...pdfOrder
       .map((name) => heatMapBubbles.find((b) => b.role === name))
       .filter((b): b is (typeof heatMapBubbles)[number] => Boolean(b)),
@@ -32,87 +109,92 @@ export default function HeatMap() {
       <div className="max-w-content mx-auto px-8">
         <Reveal>
           <div className="text-orange font-bold text-xs tracking-[1.6px] mb-1.5">{heatMapMeta.eyebrow}</div>
-          <h2 className="text-[28px] mb-6">{heatMapMeta.title}</h2>
+          <h2 className="text-[28px] mb-6 text-balance">{heatMapMeta.title}</h2>
         </Reveal>
 
-        <div className="grid lg:grid-cols-[2fr_1fr] gap-8">
-          <Reveal delay={100}>
-            <div className="bg-[#FFF4ED] border border-hairline rounded-[10px] p-5 relative">
-              <ResponsiveContainer width="100%" height={420}>
-                <ScatterChart margin={{ top: 20, right: 20, bottom: 30, left: 10 }}>
-                  <CartesianGrid stroke="#E8DFD8" />
-                  <XAxis type="number" dataKey="x" domain={[0, 10]} ticks={[0, 2, 4, 6, 8, 10]} tick={{ fontSize: 11, fill: "#6E6E6E" }}>
-                    <Label value={heatMapMeta.xAxisLabel} position="bottom" offset={10} style={{ fontSize: 11, fontWeight: 700, fill: "#2B2B2B" }} />
-                  </XAxis>
-                  <YAxis type="number" dataKey="y" domain={[0, 10]} ticks={[0, 2, 4, 6, 8, 10]} tick={{ fontSize: 11, fill: "#6E6E6E" }}>
-                    <Label value={heatMapMeta.yAxisLabel} angle={-90} position="left" style={{ fontSize: 11, fontWeight: 700, fill: "#2B2B2B", textAnchor: "middle" }} />
-                  </YAxis>
-                  <ZAxis type="number" dataKey="z" range={[600, 3600]} />
-                  <Tooltip content={<BubbleTooltip />} cursor={{ strokeDasharray: "3 3" }} />
-                  <Scatter data={data} fillOpacity={0.88}>
-                    {data.map((d, i) => <Cell key={i} fill={d.color} stroke="#fff" strokeWidth={2} />)}
-                  </Scatter>
-                  <Scatter data={pmdData} fill="none" stroke="#A1A8B3" strokeDasharray="4 3" strokeWidth={2} />
-                </ScatterChart>
-              </ResponsiveContainer>
-              {/* Role labels overlaid - approximate positions matching the data */}
-              <div className="absolute inset-5 pointer-events-none">
-                {heatMapBubbles.map((b) => (
-                  <div
-                    key={b.role}
-                    className="absolute text-white text-[11px] font-bold text-center -translate-x-1/2 -translate-y-1/2 leading-tight"
-                    style={{ left: `${(b.x / 10) * 100}%`, top: `${(1 - b.y / 10) * 82 + 3}%` }}
-                  >
-                    {b.role}<br /><span className="font-normal text-[10px]">n={b.n}</span>
-                  </div>
-                ))}
-                <div
-                  className="absolute text-muted text-[10px] font-bold text-center -translate-x-1/2 -translate-y-1/2 leading-tight whitespace-nowrap"
-                  style={{ left: `${(heatMapPMD.x / 10) * 100}%`, top: `${(1 - heatMapPMD.y / 10) * 82 + 3}%` }}
-                >
-                  P/MD (not interviewed – provisional)<br /><span className="font-normal">n={heatMapPMD.n}</span>
-                </div>
-              </div>
-            </div>
-            <div className="mt-3 text-[12px] text-muted italic">{heatMapMeta.sizeLegendLabel}</div>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <div className="bg-card rounded-[10px] p-5">
-              <div className="font-bold text-sm mb-3">Change-curve stage today</div>
-              <div className="flex flex-col gap-2.5">
+        <Reveal delay={100}>
+          <div className="bg-white border border-hairline rounded-[10px] p-5 md:p-6 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
+              <div className="text-[12px] font-bold tracking-[1.2px] text-muted uppercase">Change-curve stage today</div>
+              <ul className="flex flex-wrap items-center gap-x-4 gap-y-2">
                 {heatMapStages.map((s) => (
-                  <div key={s.label} className="flex items-center gap-2.5">
-                    {s.color ? (
-                      <span className="w-3.5 h-3.5 rounded-full shrink-0" style={{ backgroundColor: s.color }} />
-                    ) : (
-                      <span className="w-3.5 h-3.5 rounded-full shrink-0 border-2 border-dashed border-[#A1A8B3]" />
-                    )}
-                    <span className="text-[13px]">{s.label}</span>
-                  </div>
+                  <li key={s.label} className="flex items-center gap-1.5 text-[12.5px]">
+                    <StageDot color={s.color} />
+                    {s.label}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
-            <div className="bg-card rounded-[10px] p-5 mt-4">
-              <div className="font-bold text-sm mb-3">What the interviews tell us</div>
-              <dl className="flex flex-col gap-3">
-                {roleNotes.map((r) => (
-                  <div key={r.role} className="flex gap-2.5">
-                    {r.color ? (
-                      <span className="w-2.5 h-2.5 rounded-full shrink-0 mt-1.5" style={{ backgroundColor: r.color }} aria-hidden="true" />
-                    ) : (
-                      <span className="w-2.5 h-2.5 rounded-full shrink-0 mt-1.5 border-2 border-dashed border-[#A1A8B3]" aria-hidden="true" />
-                    )}
-                    <div>
-                      <dt className="text-[13px] font-bold">{r.role}</dt>
-                      <dd className="text-[12.5px] text-muted leading-relaxed">{r.desc}</dd>
-                    </div>
-                  </div>
-                ))}
-              </dl>
+
+            <ResponsiveContainer width="100%" height={460}>
+              <ScatterChart margin={{ top: 24, right: 24, bottom: 36, left: 16 }}>
+                <ReferenceArea x1={5} x2={10} y1={5} y2={10} fill="#FE7C39" fillOpacity={0.06} stroke="none" />
+                <CartesianGrid stroke="#F0E8E2" strokeDasharray="2 4" />
+                <ReferenceLine x={5} stroke="#E3D6CC" />
+                <ReferenceLine y={5} stroke="#E3D6CC" />
+                <XAxis
+                  type="number"
+                  dataKey="x"
+                  domain={[0, 10]}
+                  ticks={[0, 2, 4, 6, 8, 10]}
+                  tick={{ fontSize: 11, fill: MUTED }}
+                  axisLine={{ stroke: "#CFC4BB" }}
+                  tickLine={false}
+                >
+                  <Label
+                    value={heatMapMeta.xAxisLabel}
+                    position="bottom"
+                    offset={14}
+                    style={{ fontSize: 11, fontWeight: 700, fill: INK, letterSpacing: 0.4 }}
+                  />
+                </XAxis>
+                <YAxis
+                  type="number"
+                  dataKey="y"
+                  domain={[0, 10]}
+                  ticks={[0, 2, 4, 6, 8, 10]}
+                  tick={{ fontSize: 11, fill: MUTED }}
+                  axisLine={{ stroke: "#CFC4BB" }}
+                  tickLine={false}
+                >
+                  <Label
+                    value={heatMapMeta.yAxisLabel}
+                    angle={-90}
+                    position="left"
+                    style={{ fontSize: 11, fontWeight: 700, fill: INK, textAnchor: "middle", letterSpacing: 0.4 }}
+                  />
+                </YAxis>
+                <Tooltip content={<BubbleTooltip />} cursor={false} />
+                <Scatter data={[heatMapPMD]} shape={<Bubble />} isAnimationActive={false} />
+                <Scatter data={heatMapBubbles} shape={<Bubble />} />
+              </ScatterChart>
+            </ResponsiveContainer>
+
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-hairline">
+              <p className="text-[12px] text-muted italic">{heatMapMeta.sizeLegendLabel}</p>
+              <p className="text-[12px] text-muted">Number inside each bubble = stakeholders interviewed</p>
             </div>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={200}>
+          <h3 className="font-bold text-base mt-8 mb-4">What the interviews tell us</h3>
+          <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {roleNotes.map((r) => (
+              <li key={r.role} className="bg-card rounded-[10px] p-5 flex flex-col gap-2 h-full">
+                <div className="flex items-center gap-2.5">
+                  <StageDot color={r.color} size="w-3.5 h-3.5" />
+                  <span className="font-bold text-[14px]">{r.role}</span>
+                  <span className="ml-auto text-[12px] text-muted">n={r.n}</span>
+                </div>
+                <span className="text-[11.5px] font-bold tracking-[0.6px] uppercase" style={{ color: r.color || MUTED }}>
+                  {r.stage ?? "Not assessed"}
+                </span>
+                <p className="text-[13px] text-muted leading-relaxed">{r.desc}</p>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
         <Reveal delay={280}>
           <div className="bg-[#2B2B2B] text-white rounded-lg px-5 py-4 mt-7 text-[14.5px]">
