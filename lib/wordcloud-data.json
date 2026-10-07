@@ -1,155 +1,326 @@
 [
   {
-    "word": "Comfortable",
+    "word": "Helpful",
     "x": 50.0,
-    "y": 50.0,
-    "fontSize": 110.0,
+    "y": 46.79,
+    "fontSize": 116.0,
     "color": "#FD5108",
     "rotate": 0,
-    "freq": 37
+    "freq": 88
+  },
+  {
+    "word": "Learning",
+    "x": 48.98,
+    "y": 29.45,
+    "fontSize": 81.8,
+    "color": "#6E6E6E",
+    "rotate": 0,
+    "freq": 42
+  },
+  {
+    "word": "Comfortable",
+    "x": 50.43,
+    "y": 63.86,
+    "fontSize": 78.0,
+    "color": "#FE7C39",
+    "rotate": 0,
+    "freq": 38
   },
   {
     "word": "Trust",
-    "x": 50.13,
-    "y": 32.76,
-    "fontSize": 81.7,
-    "color": "#6E6E6E",
-    "rotate": 0,
-    "freq": 21
+    "x": 23.79,
+    "y": 40.98,
+    "fontSize": 60.7,
+    "color": "#A1A8B3",
+    "rotate": 90,
+    "freq": 22
   },
   {
     "word": "Judgment",
-    "x": 49.33,
-    "y": 66.84,
-    "fontSize": 75.3,
-    "color": "#FE7C39",
+    "x": 48.46,
+    "y": 75.75,
+    "fontSize": 55.4,
+    "color": "#FFAA72",
     "rotate": 0,
     "freq": 18
   },
   {
     "word": "Risk",
-    "x": 34.29,
-    "y": 25.24,
-    "fontSize": 68.3,
-    "color": "#A1A8B3",
-    "rotate": 90,
-    "freq": 15
+    "x": 69.98,
+    "y": 21.19,
+    "fontSize": 52.5,
+    "color": "#6E6E6E",
+    "rotate": -90,
+    "freq": 16
   },
   {
     "word": "Accurate",
-    "x": 48.46,
-    "y": 79.81,
-    "fontSize": 65.9,
-    "color": "#FFAA72",
+    "x": 50.59,
+    "y": 17.36,
+    "fontSize": 51.0,
+    "color": "#FD5108",
     "rotate": 0,
-    "freq": 14
+    "freq": 15
+  },
+  {
+    "word": "Adoption",
+    "x": 52.4,
+    "y": 8.42,
+    "fontSize": 46.2,
+    "color": "#6E6E6E",
+    "rotate": 0,
+    "freq": 12
   },
   {
     "word": "Excited",
-    "x": 86.69,
-    "y": 56.4,
-    "fontSize": 55.0,
-    "color": "#6E6E6E",
-    "rotate": -90,
+    "x": 52.11,
+    "y": 84.83,
+    "fontSize": 42.6,
+    "color": "#FE7C39",
+    "rotate": 0,
     "freq": 10
   },
   {
-    "word": "Confident",
-    "x": 53.13,
-    "y": 19.52,
-    "fontSize": 51.9,
+    "word": "Open",
+    "x": 34.07,
+    "y": 16.9,
+    "fontSize": 42.6,
+    "color": "#A1A8B3",
+    "rotate": 0,
+    "freq": 10
+  },
+  {
+    "word": "Validate",
+    "x": 74.96,
+    "y": 34.62,
+    "fontSize": 42.6,
+    "color": "#FFAA72",
+    "rotate": 90,
+    "freq": 10
+  },
+  {
+    "word": "Concerned",
+    "x": 74.14,
+    "y": 74.97,
+    "fontSize": 42.6,
+    "color": "#6E6E6E",
+    "rotate": 0,
+    "freq": 10
+  },
+  {
+    "word": "Believe",
+    "x": 34.63,
+    "y": 88.23,
+    "fontSize": 40.7,
     "color": "#FD5108",
     "rotate": 0,
     "freq": 9
   },
   {
-    "word": "Concerned",
-    "x": 51.48,
-    "y": 90.73,
-    "fontSize": 51.9,
+    "word": "Confident",
+    "x": 25.52,
+    "y": 77.02,
+    "fontSize": 40.7,
     "color": "#6E6E6E",
+    "rotate": 0,
+    "freq": 9
+  },
+  {
+    "word": "Rely",
+    "x": 37.03,
+    "y": 8.06,
+    "fontSize": 40.7,
+    "color": "#FE7C39",
     "rotate": 0,
     "freq": 9
   },
   {
     "word": "Hopeful",
-    "x": 49.84,
-    "y": 9.53,
-    "fontSize": 48.7,
-    "color": "#FE7C39",
+    "x": 69.2,
+    "y": 84.05,
+    "fontSize": 38.7,
+    "color": "#A1A8B3",
     "rotate": 0,
     "freq": 8
   },
   {
-    "word": "Believe",
-    "x": 71.04,
-    "y": 33.41,
-    "fontSize": 45.2,
-    "color": "#A1A8B3",
+    "word": "Acceptance",
+    "x": 79.23,
+    "y": 48.67,
+    "fontSize": 38.7,
+    "color": "#FFAA72",
+    "rotate": -90,
+    "freq": 8
+  },
+  {
+    "word": "Consistent",
+    "x": 18.78,
+    "y": 51.6,
+    "fontSize": 38.7,
+    "color": "#6E6E6E",
+    "rotate": 90,
+    "freq": 8
+  },
+  {
+    "word": "Hesitant",
+    "x": 19.44,
+    "y": 19.03,
+    "fontSize": 36.5,
+    "color": "#FD5108",
     "rotate": 0,
     "freq": 7
   },
   {
-    "word": "Hesitant",
-    "x": 23.16,
-    "y": 79.35,
-    "fontSize": 45.2,
-    "color": "#FFAA72",
-    "rotate": 90,
+    "word": "Useful",
+    "x": 24.47,
+    "y": 9.41,
+    "fontSize": 36.5,
+    "color": "#6E6E6E",
+    "rotate": 0,
     "freq": 7
   },
   {
+    "word": "Valuable",
+    "x": 75.51,
+    "y": 4.67,
+    "fontSize": 34.2,
+    "color": "#FE7C39",
+    "rotate": 0,
+    "freq": 6
+  },
+  {
+    "word": "Control",
+    "x": 79.07,
+    "y": 12.19,
+    "fontSize": 31.7,
+    "color": "#A1A8B3",
+    "rotate": 0,
+    "freq": 5
+  },
+  {
     "word": "Skeptical",
-    "x": 74.14,
-    "y": 79.01,
-    "fontSize": 37.5,
-    "color": "#6E6E6E",
+    "x": 85.28,
+    "y": 18.95,
+    "fontSize": 31.7,
+    "color": "#FFAA72",
     "rotate": 0,
     "freq": 5
   },
   {
     "word": "Worried",
-    "x": 74.66,
-    "y": 64.76,
-    "fontSize": 37.5,
-    "color": "#FD5108",
+    "x": 87.98,
+    "y": 46.89,
+    "fontSize": 31.7,
+    "color": "#6E6E6E",
     "rotate": 0,
     "freq": 5
   },
   {
-    "word": "Nervous",
-    "x": 73.26,
-    "y": 25.53,
-    "fontSize": 33.0,
+    "word": "Amazing",
+    "x": 15.0,
+    "y": 41.22,
+    "fontSize": 31.7,
+    "color": "#FD5108",
+    "rotate": 90,
+    "freq": 5
+  },
+  {
+    "word": "Collaboration",
+    "x": 14.91,
+    "y": 84.03,
+    "fontSize": 28.9,
     "color": "#6E6E6E",
     "rotate": 0,
     "freq": 4
   },
   {
+    "word": "Nervous",
+    "x": 14.71,
+    "y": 25.84,
+    "fontSize": 28.9,
+    "color": "#FE7C39",
+    "rotate": 0,
+    "freq": 4
+  },
+  {
+    "word": "Familiar",
+    "x": 86.5,
+    "y": 66.38,
+    "fontSize": 25.8,
+    "color": "#A1A8B3",
+    "rotate": -90,
+    "freq": 3
+  },
+  {
+    "word": "Partner",
+    "x": 85.4,
+    "y": 25.57,
+    "fontSize": 25.8,
+    "color": "#FFAA72",
+    "rotate": 0,
+    "freq": 3
+  },
+  {
+    "word": "Potential",
+    "x": 88.06,
+    "y": 38.14,
+    "fontSize": 25.8,
+    "color": "#6E6E6E",
+    "rotate": 0,
+    "freq": 3
+  },
+  {
+    "word": "Curious",
+    "x": 21.71,
+    "y": 89.92,
+    "fontSize": 22.0,
+    "color": "#FD5108",
+    "rotate": 0,
+    "freq": 2
+  },
+  {
     "word": "Faith",
-    "x": 70.88,
-    "y": 70.91,
+    "x": 65.12,
+    "y": 16.21,
+    "fontSize": 22.0,
+    "color": "#6E6E6E",
+    "rotate": 90,
+    "freq": 2
+  },
+  {
+    "word": "Wary",
+    "x": 85.17,
+    "y": 32.0,
     "fontSize": 22.0,
     "color": "#FE7C39",
     "rotate": 0,
     "freq": 2
   },
   {
-    "word": "Wary",
-    "x": 29.61,
-    "y": 64.81,
+    "word": "Fear",
+    "x": 13.66,
+    "y": 55.43,
     "fontSize": 22.0,
     "color": "#A1A8B3",
     "rotate": 0,
     "freq": 2
   },
   {
-    "word": "Fear",
-    "x": 28.7,
-    "y": 33.39,
+    "word": "Inspired",
+    "x": 86.69,
+    "y": 53.01,
     "fontSize": 22.0,
     "color": "#FFAA72",
-    "rotate": -90,
+    "rotate": 0,
+    "freq": 2
+  },
+  {
+    "word": "Intuitive",
+    "x": 81.97,
+    "y": 89.96,
+    "fontSize": 22.0,
+    "color": "#6E6E6E",
+    "rotate": 0,
     "freq": 2
   }
 ]

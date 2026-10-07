@@ -55,7 +55,7 @@ export default function Methodology() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
           <StatCard num={String(meta.stakeholders)} label="Stakeholders interviewed" delay={0} />
           <StatCard num={String(meta.roleLevels)} label="Role levels Associate to Director" delay={80} />
-          <StatCard num={String(meta.clusters)} label="Thematic clusters analyzed" delay={160} />
+          <StatCard num={String(meta.clusters)} label="Questions organized under eight themes" delay={160} />
           <StatCard num={meta.avgDuration} label="Average interview length" delay={240} />
         </div>
 

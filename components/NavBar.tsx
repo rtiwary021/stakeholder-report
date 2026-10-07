@@ -7,10 +7,8 @@ const SECTIONS = [
   { id: "methodology", label: "Methodology" },
   { id: "summary", label: "Summary" },
   { id: "overview", label: "Overview" },
-  { id: "wordcloud", label: "Voices" },
   { id: "themes", label: "Themes" },
-  { id: "risks", label: "Risks" },
-  { id: "messages", label: "Messaging" },
+  { id: "wordcloud", label: "Voices" },
   { id: "recommendations", label: "Recommendations" },
 ];
 

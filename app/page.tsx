@@ -3,11 +3,11 @@ import Hero from "@/components/Hero";
 import Methodology from "@/components/Methodology";
 import ExecSummary from "@/components/ExecSummary";
 import Overview from "@/components/Overview";
-import WordCloud from "@/components/WordCloud";
+import HeatMap from "@/components/HeatMap";
 import ThemeSection from "@/components/ThemeSection";
 import Theme8 from "@/components/Theme8";
-import Risks from "@/components/Risks";
-import KeyMessages from "@/components/KeyMessages";
+import WordCloud from "@/components/WordCloud";
+import SkillShift from "@/components/SkillShift";
 import Recommendations from "@/components/Recommendations";
 import Closing from "@/components/Closing";
 import Footer from "@/components/Footer";
@@ -24,15 +24,15 @@ export default function Home() {
       <Methodology />
       <ExecSummary />
       <Overview />
-      <WordCloud />
+      <HeatMap />
       <div id="themes">
         {themes.map((t, i) => (
           <ThemeSection key={t.title} data={t} index={i} />
         ))}
         <Theme8 />
       </div>
-      <Risks />
-      <KeyMessages />
+      <WordCloud />
+      <SkillShift />
       <Recommendations />
       <Closing />
       <Footer />

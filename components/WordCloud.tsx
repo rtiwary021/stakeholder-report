@@ -42,8 +42,9 @@ export default function WordCloud() {
 
           <div className="bg-orange text-white rounded-[10px] px-6 py-5 mb-7 text-[14.5px]">
             <b className="inline-block tracking-[1.2px] text-xs mr-2.5 opacity-75">SO WHAT</b>
-            &ldquo;Comfortable&rdquo; is the most-used word stakeholders reach for when describing AI — followed
-            closely by Trust, Judgment, and Risk, echoing a practice that is engaged but still calibrating.
+            &ldquo;Helpful&rdquo; is the most-used word stakeholders reach for when describing AI — well ahead
+            of Learning and Comfortable, echoing a practice that sees real utility in the tool while still
+            building full confidence in it.
           </div>
         </Reveal>
 
