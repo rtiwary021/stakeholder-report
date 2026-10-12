@@ -7,12 +7,9 @@ const SECTIONS = [
   { id: "methodology", label: "Methodology" },
   { id: "summary", label: "Summary" },
   { id: "overview", label: "Overview" },
-  { id: "wordcloud", label: "Voices" },
   { id: "themes", label: "Themes" },
-  { id: "risks", label: "Risks" },
+  { id: "wordcloud", label: "Voices" },
   { id: "recommendations", label: "Recommendations" },
-  { id: "rollout", label: "Rollout" },
-  { id: "messages", label: "Messaging" },
 ];
 
 export default function NavBar() {

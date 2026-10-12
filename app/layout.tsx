@@ -3,8 +3,8 @@ import "./globals.css";
 import { meta as reportMeta } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Stakeholder Impact Report — Agentic Delivery Transformation",
-  description: `Findings from ${reportMeta.stakeholders} completed stakeholder interviews on agentic delivery transformation.`,
+  title: reportMeta.title,
+  description: `Findings from ${reportMeta.stakeholders} completed stakeholder interviews on AI delivery adoption.`,
 };
 
 export default function RootLayout({
