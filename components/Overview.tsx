@@ -34,9 +34,9 @@ function CustomTooltip({ active, payload, label }: any) {
 }
 
 const SERIES = [
-  { key: "Positive", color: COLORS.orange },
-  { key: "Mixed", color: COLORS.orange2 },
-  { key: "Concerned", color: COLORS.grey },
+    { key: "Positive", color: COLORS.positive },
+    { key: "Mixed", color: COLORS.mixed },
+    { key: "Concerned", color: COLORS.concerned },
 ] as const;
 
 export default function Overview() {

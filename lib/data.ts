@@ -9,6 +9,9 @@ export const COLORS = {
   grey: "#6E6E6E",
   grey4: "#A1A8B3",
   card: "#F2F2F2",
+  positive: "#4C8C5B",
+  mixed: "#FE7C39",
+  concerned: "#E65040",
 };
 
 export const meta = {
@@ -572,13 +575,13 @@ export const heatMapMeta = {
 export const heatMapBubbles = [
   { role: "Sr. Associates", n: 4, x: 7.0, y: 9.0, size: 9, color: COLORS.orange2, stage: "Exploration (mixed)",
     desc: "Closest to build \u2014 user stories, dev specs, requirements; split between excitement and fear of giving up control." },
-  { role: "Associates", n: 3, x: 8.8, y: 5.8, size: 7, color: "#E65040", stage: "Concern / Resistance",
+  { role: "Associates", n: 3, x: 8.8, y: 5.8, size: 7, color: COLORS.concerned, stage: "Concern / Resistance",
     desc: "Notes, decks, ADO reporting and documentation are the work agents absorb first; hesitancy after poor past AI output." },
   { role: "Managers", n: 5, x: 5.3, y: 6.8, size: 6, color: "#FFC845", stage: "Acceptance / Engagement",
     desc: "Shift from grooming requirements to reviewing AI output; most excited cohort, skeptical mainly of AI-generated code." },
   { role: "Sr. Managers", n: 4, x: 3.5, y: 4.5, size: 6, color: COLORS.orange2, stage: "Exploration (mixed)",
     desc: "Status reports, test scripts automated; role moves to architecture and risk; cautious on data sensitivity and accuracy." },
-  { role: "Directors", n: 2, x: 2.0, y: 3.0, size: 5, color: "#4C8C5B", stage: "Commitment",
+  { role: "Directors", n: 2, x: 2.0, y: 3.0, size: 5, color: COLORS.positive, stage: "Commitment",
     desc: "Impact is commercial \u2014 staffing pyramid, skill mix of junior resources, more time on pursuits; no resistance voiced." },
 ];
 
@@ -586,10 +589,10 @@ export const heatMapPMD = { role: "P/MD", n: 0, x: 4.5, y: 1.2, size: 3,
   desc: "Not interviewed \u2014 position is a hypothesis to validate (pricing, pyramid and incentive decisions)." };
 
 export const heatMapStages = [
-  { color: "#E65040", label: "Concern / Resistance" },
+  { color: COLORS.concerned, label: "Concern / Resistance" },
   { color: COLORS.orange2, label: "Exploration (mixed)" },
   { color: "#FFC845", label: "Acceptance / Engagement" },
-  { color: "#4C8C5B", label: "Commitment" },
+  { color: COLORS.positive, label: "Commitment" },
   { color: null, label: "Not assessed" },
 ];
 
