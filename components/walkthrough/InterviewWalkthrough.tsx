@@ -1,153 +1,107 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Flow, flowLabel, interview } from "@/lib/interview";
-import FlowMap from "./FlowMap";
-import QuestionCard from "./QuestionCard";
-import TracePanel from "./TracePanel";
+import { useEffect, useState } from "react";
+import { interview, sectionOf } from "@/lib/interview";
 
-const { questions, asks, outputs, minutes } = interview;
+const { questions } = interview;
 
 export default function InterviewWalkthrough() {
-  const [currentId, setCurrentId] = useState(questions[0].id);
-  const [flow, setFlow] = useState<Flow | null>(null);
-  const [interviewerMode, setInterviewerMode] = useState(true);
+  const [index, setIndex] = useState(0);
+  const current = questions[index];
+  const total = questions.length;
 
-  const steps = useMemo(
-    () => (flow ? questions.filter((q) => flow.item.ids.includes(q.id)) : questions),
-    [flow]
-  );
-  const highlightIds = useMemo(() => (flow ? new Set(flow.item.ids) : null), [flow]);
-
-  const current = questions.find((q) => q.id === currentId)!;
-  const stepIndex = steps.findIndex((q) => q.id === currentId);
-  const startMinute =
-    minutes.buffer + questions.slice(0, current.order - 1).reduce((sum, q) => sum + q.minutes, 0);
-
-  const feedsOutputs = outputs.filter((o) => o.ids.includes(current.id) && o.ids.length < questions.length);
-
-  const go = (delta: number) => {
-    if (stepIndex === -1) {
-      const next = delta > 0 ? steps.find((q) => q.order > current.order) : [...steps].reverse().find((q) => q.order < current.order);
-      if (next) setCurrentId(next.id);
-      return;
-    }
-    const next = steps[stepIndex + delta];
-    if (next) setCurrentId(next.id);
-  };
-
-  const applyFlow = (next: Flow | null) => {
-    setFlow(next);
-    if (next && !next.item.ids.includes(currentId)) {
-      const first = questions.find((q) => next.item.ids.includes(q.id));
-      if (first) setCurrentId(first.id);
-    }
-  };
+  const go = (delta: number) => setIndex((i) => Math.min(total - 1, Math.max(0, i + delta)));
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest("input, textarea, [contenteditable]")) return;
-      if (e.key === "ArrowRight") go(1);
-      if (e.key === "ArrowLeft") go(-1);
+      if (e.key === "ArrowRight") setIndex((i) => Math.min(total - 1, i + 1));
+      if (e.key === "ArrowLeft") setIndex((i) => Math.max(0, i - 1));
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  });
-
-  const atStart = stepIndex === 0 || (stepIndex === -1 && !steps.some((q) => q.order < current.order));
-  const atEnd = stepIndex === steps.length - 1 || (stepIndex === -1 && !steps.some((q) => q.order > current.order));
+  }, [total]);
 
   return (
-    <section className="pb-16" aria-label="Interview walkthrough">
-      <div className="max-w-content mx-auto px-8 flex flex-col gap-8">
-        <div className="bg-white border border-hairline rounded-[10px] p-5 flex flex-col gap-4">
-          <FlowMap questions={questions} currentId={currentId} highlightIds={highlightIds} onSelect={setCurrentId} />
-          <div className="flex flex-wrap items-center justify-between gap-3 text-[13px]">
-            <div className="flex flex-wrap items-center gap-4 text-muted">
-              <span className="inline-flex items-center gap-2">
-                <span className="w-3 h-3 rounded-sm bg-orange" aria-hidden="true" /> Leadership emphasis
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <span className="w-3 h-3 rounded-sm bg-card border border-hairline" aria-hidden="true" /> Standard
+    <section className="pb-16" aria-label="Interview questions">
+      <div className="max-w-content mx-auto px-8 flex flex-col gap-10">
+        <div className="flex flex-col gap-6">
+          <nav aria-label="Jump to question" className="flex gap-1.5">
+            {questions.map((q, i) => (
+              <button
+                key={q.id}
+                type="button"
+                onClick={() => setIndex(i)}
+                aria-label={`Question ${i + 1}`}
+                aria-current={i === index ? "step" : undefined}
+                className={`h-2 flex-1 rounded-full transition-colors ${
+                  i === index ? "bg-orange" : i < index ? "bg-orange/40" : "bg-card hover:bg-orange/20"
+                }`}
+              />
+            ))}
+          </nav>
+
+          <article
+            key={current.id}
+            className="bg-white border border-hairline rounded-[10px] p-8 md:p-12 min-h-[300px] flex flex-col gap-6 animate-in"
+            aria-live="polite"
+          >
+            <div className="flex items-center justify-between gap-4 text-[13px]">
+              <span className="text-orange font-bold tracking-[2px] uppercase">{sectionOf(current.id)}</span>
+              <span className="text-muted font-bold">
+                Question {index + 1} of {total}
               </span>
             </div>
-            <div className="flex items-center gap-1 bg-card rounded-lg p-1" role="group" aria-label="View mode">
-              {[
-                { value: true, label: "Interviewer view" },
-                { value: false, label: "Interviewee view" },
-              ].map((m) => (
-                <button
-                  key={m.label}
-                  type="button"
-                  aria-pressed={interviewerMode === m.value}
-                  onClick={() => setInterviewerMode(m.value)}
-                  className={`font-bold rounded-md px-3 py-1.5 transition-colors ${
-                    interviewerMode === m.value ? "bg-white text-orange shadow-sm" : "text-muted hover:text-orange"
-                  }`}
-                >
-                  {m.label}
-                </button>
-              ))}
-            </div>
+            <p className="text-[24px] md:text-[30px] leading-snug text-pretty">{current.question}</p>
+          </article>
+
+          <div className="flex items-center justify-between gap-4">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              disabled={index === 0}
+              className="text-sm font-bold rounded-lg px-5 py-2.5 border border-hairline hover:border-orange hover:text-orange transition-colors disabled:opacity-40 disabled:pointer-events-none"
+            >
+              &larr; Previous
+            </button>
+            <span className="hidden sm:inline text-[13px] text-muted">Use &larr; &rarr; keys to move</span>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              disabled={index === total - 1}
+              className="text-sm font-bold rounded-lg px-5 py-2.5 bg-orange text-white hover:bg-orange2 transition-colors disabled:opacity-40 disabled:pointer-events-none"
+            >
+              Next &rarr;
+            </button>
           </div>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-[1fr_320px] items-start">
-          <div className="flex flex-col gap-6">
-            {flow && (
-              <div className="flex items-start justify-between gap-4 bg-orange/10 rounded-lg px-4 py-3">
-                <p className="text-[13.5px] leading-relaxed">
-                  <b className="text-orange tracking-[1px] text-xs mr-2">
-                    {flow.kind === "ask" ? "TRACING ASK" : "TRACING OUTPUT"}
-                  </b>
-                  {flowLabel(flow)}
-                </p>
+        <div className="flex flex-col gap-4">
+          <h2 className="text-[22px]">All {total} questions</h2>
+          <ol className="bg-white border border-hairline rounded-[10px] divide-y divide-hairline">
+            {questions.map((q, i) => (
+              <li key={q.id}>
                 <button
                   type="button"
-                  onClick={() => setFlow(null)}
-                  className="text-xs font-bold text-orange whitespace-nowrap hover:underline"
+                  onClick={() => {
+                    setIndex(i);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className={`w-full text-left flex items-start gap-4 px-5 py-4 transition-colors hover:bg-card ${
+                    i === index ? "bg-orange/10" : ""
+                  }`}
                 >
-                  Clear
+                  <span
+                    className={`shrink-0 w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center ${
+                      i === index ? "bg-orange text-white" : "bg-card text-muted"
+                    }`}
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="text-[15px] leading-relaxed text-pretty">{q.question}</span>
                 </button>
-              </div>
-            )}
-
-            <QuestionCard
-              key={current.id}
-              question={current}
-              total={questions.length}
-              startMinute={startMinute}
-              interviewerMode={interviewerMode}
-              feedsOutputs={feedsOutputs}
-              onTraceOutput={applyFlow}
-            />
-
-            <div className="flex items-center justify-between gap-4 border-t border-hairline pt-5">
-              <button
-                type="button"
-                onClick={() => go(-1)}
-                disabled={atStart}
-                className="text-sm font-bold rounded-lg px-5 py-2.5 border border-hairline hover:border-orange hover:text-orange transition-colors disabled:opacity-40 disabled:pointer-events-none"
-              >
-                &larr; Previous
-              </button>
-              <span className="text-[13px] text-muted text-center">
-                {stepIndex === -1 ? "Outside this flow" : `${stepIndex + 1} of ${steps.length}${flow ? " in this flow" : ""}`}
-                <span className="hidden sm:inline"> &middot; use &larr; &rarr; keys</span>
-              </span>
-              <button
-                type="button"
-                onClick={() => go(1)}
-                disabled={atEnd}
-                className="text-sm font-bold rounded-lg px-5 py-2.5 bg-orange text-white hover:bg-orange2 transition-colors disabled:opacity-40 disabled:pointer-events-none"
-              >
-                Next &rarr;
-              </button>
-            </div>
-          </div>
-
-          <TracePanel asks={asks} outputs={outputs} flow={flow} onChange={applyFlow} />
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
