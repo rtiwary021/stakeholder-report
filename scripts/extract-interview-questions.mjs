@@ -3,72 +3,59 @@
 import { readFileSync, writeFileSync } from "fs";
 import { read, utils } from "xlsx";
 
-const SOURCE = "data/ERP-Change-Comms-Stakeholder-Interview-Questions-deffb2.xlsx";
+const SOURCE = "data/ERP-Change-Comms-Stakeholder-Interview-Questions-f37651.xlsx";
 const OUT = "lib/interview-questions.json";
-const EMPHASIS_FILL = "FBD9C3";
 
-const wb = read(readFileSync(SOURCE), { cellStyles: true });
+const wb = read(readFileSync(SOURCE));
 const ws = wb.Sheets["Questions & Outputs"];
 const rows = utils.sheet_to_json(ws, { header: 1, defval: "" });
 const text = (v) => String(v ?? "").trim();
-const findRow = (prefix) => rows.findIndex((r) => text(r[0]).startsWith(prefix));
 
-const allIds = [];
-function parseIds(raw) {
-  const s = text(raw);
-  if (/^all/i.test(s)) return [...allIds];
-  return s.match(/\b[A-HR]\d\b/g) ?? [];
-}
+const header = rows.findIndex((r) => text(r[0]) === "Order");
+const col = (name) => rows[header].findIndex((h) => text(h).startsWith(name));
+const C = {
+  question: col("Question"),
+  wave1: col("Wave 1 agents"),
+  later: col("Later-wave agents"),
+  deliverable: col("Future deliverable"),
+  minutes: col("Min"),
+  notes: col("Interviewer notes"),
+};
 
-const qStart = findRow("Order") + 1;
 const questions = [];
-for (let i = qStart; i < rows.length; i++) {
+for (let i = header + 1; i < rows.length; i++) {
   const r = rows[i];
   if (typeof r[0] !== "number") break;
-  const fill = ws[utils.encode_cell({ r: i, c: 2 })]?.s?.fgColor?.rgb;
   questions.push({
     order: r[0],
-    id: text(r[1]),
-    question: text(r[2]),
-    wave1Agents: text(r[3]),
-    laterAgents: text(r[4]),
-    output: text(r[5]),
-    deliverable: text(r[6]),
-    emphasis: text(r[7]),
-    minutes: Number(r[8]) || 0,
-    notes: text(r[9]),
-    leadershipPriority: fill === EMPHASIS_FILL,
+    id: `Q${r[0]}`,
+    question: text(r[C.question]),
+    wave1Agents: text(r[C.wave1]),
+    laterAgents: text(r[C.later]),
+    output: "",
+    deliverable: text(r[C.deliverable]),
+    emphasis: "",
+    minutes: Number(r[C.minutes]) || 0,
+    notes: text(r[C.notes]),
+    leadershipPriority: false,
   });
-  allIds.push(text(r[1]));
 }
 
 const minutesRow = (label) =>
-  Number(rows.find((r) => r.some((v) => text(v).startsWith(label)))?.find((v) => typeof v === "number")) || 0;
-
-const asks = [];
-for (let i = findRow("A. ") + 2; i < rows.length && typeof rows[i][0] === "number"; i++) {
-  const r = rows[i];
-  asks.push({ n: r[0], ask: text(r[2]), idsLabel: text(r[3]), ids: parseIds(r[3]), response: text(r[4]) });
-}
-
-const outputs = [];
-for (let i = findRow("C. ") + 2; i < rows.length && typeof rows[i][0] === "number"; i++) {
-  const r = rows[i];
-  outputs.push({ n: r[0], output: text(r[2]), idsLabel: text(r[3]), ids: parseIds(r[3]), deliverable: text(r[4]), neededBy: text(r[7]) });
-}
+  Number(rows.find((r) => r.some((v) => text(v).startsWith(label)))?.[C.minutes]) || 0;
 
 const data = {
   title: text(rows[0][0]),
-  intro: text(rows[1][0]),
+  intro: "",
   minutes: {
     questions: minutesRow("Questions subtotal"),
     buffer: minutesRow("Intro and buffer"),
     total: minutesRow("Total interview"),
   },
   questions,
-  asks,
-  outputs,
+  asks: [],
+  outputs: [],
 };
 
 writeFileSync(OUT, JSON.stringify(data, null, 2) + "\n");
-console.log(`Wrote ${questions.length} questions, ${asks.length} asks, ${outputs.length} outputs to ${OUT}`);
+console.log(`Wrote ${questions.length} questions to ${OUT}`, data.minutes);

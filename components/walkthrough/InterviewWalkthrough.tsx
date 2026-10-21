@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { interview, sectionOf } from "@/lib/interview";
+import { interview } from "@/lib/interview";
 
 const { questions } = interview;
 
@@ -46,7 +46,7 @@ export default function InterviewWalkthrough({ onBackToIntro }: { onBackToIntro?
             aria-live="polite"
           >
             <div className="flex items-center justify-between gap-4 text-[13px]">
-              <span className="text-orange font-bold tracking-[2px] uppercase">{sectionOf(current.id)}</span>
+              <span className="text-orange font-bold tracking-[2px] uppercase">Question {index + 1}</span>
               <span className="text-muted font-bold">
                 Question {index + 1} of {total}
               </span>
