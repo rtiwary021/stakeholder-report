@@ -1,0 +1,483 @@
+{
+  "title": "ERP Stakeholder Interview: Questions, What They Map To, and What They Produce",
+  "intro": "16 questions, same for everyone, about 45 minutes. Orange rows = what leadership emphasized most. Share only the Question column with interviewees; the rest is internal.",
+  "minutes": {
+    "questions": 41,
+    "buffer": 4,
+    "total": 45
+  },
+  "questions": [
+    {
+      "order": 1,
+      "id": "R1",
+      "question": "Tell me about your current role on your project. What are the main things you produce, decide or review in a typical week?",
+      "wave1Agents": "All (anchors the ratings in R2)",
+      "laterAgents": "All (anchors the ratings in R2)",
+      "output": "Persona tag (SCM, finance, technical, PM, engagement leader, other) on every finding",
+      "deliverable": "Every deliverable (all findings split by persona); learning pathways by work performed",
+      "emphasis": "Role / persona context",
+      "minutes": 2,
+      "notes": "Confirm the role from the profile form. Which of those tasks involve writing up meetings, designs, plans, status or test material?",
+      "leadershipPriority": true
+    },
+    {
+      "order": 2,
+      "id": "A1",
+      "question": "Think of a typical week. Where does time go on work that isn't advising the client or making decisions, such as writing up meetings, drafting requirements or designs, building plans and reports, or chasing status?",
+      "wave1Agents": "Meeting recaps; Knowledge hub",
+      "laterAgents": "Requirements capture; Functional and technical design drafts; Status reports; Delivery plans",
+      "output": "Baseline hours for adoption measurement; impact by group",
+      "deliverable": "Impact assessment; adoption measurement approach and 30/60/90-day reports",
+      "emphasis": "Full roadmap; defined output",
+      "minutes": 2,
+      "notes": "Roughly how many hours a week on each? Which would you most like back?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 3,
+      "id": "B1",
+      "question": "In your own words, what do you expect to get by the end of December, and what do you expect to come later?",
+      "wave1Agents": "All five",
+      "laterAgents": "All later waves (high level)",
+      "output": "Message comprehension; awareness baseline; validated change vision; FAQs",
+      "deliverable": "Change vision; communications plan and collateral; FAQs",
+      "emphasis": "Full roadmap, Wave 1 emphasis; plain language",
+      "minutes": 3,
+      "notes": "Show: What to expect (slide 3) and the roadmap (slide 5). What had you heard before today, and from whom? What is unclear or sounds like jargon?",
+      "leadershipPriority": true
+    },
+    {
+      "order": 4,
+      "id": "R2",
+      "question": "For each agent on the roadmap, from the five arriving by end of December to the ones planned for later, how useful would it be in your role: very useful, somewhat useful, or not relevant? Which two would you want first?",
+      "wave1Agents": "All five",
+      "laterAgents": "All 16 later-wave agents (Waves 2 to 4)",
+      "output": "Persona heat map: how useful each persona finds each agent, now and later",
+      "deliverable": "Persona-specific messages; learning pathways; plans for later releases",
+      "emphasis": "Persona heat map; full roadmap",
+      "minutes": 6,
+      "notes": "Show: agent glossary (slide 6). Record ratings in the Agent Heat Map tab. Is anything missing? If an agent matters mainly in a later wave, what makes it matter?",
+      "leadershipPriority": true
+    },
+    {
+      "order": 5,
+      "id": "B4",
+      "question": "Later agents have timing still to be confirmed. Which would you like us to talk about now, and which should wait until dates are firm?",
+      "wave1Agents": "-",
+      "laterAgents": "Waves 2 to 4 (timing to be confirmed)",
+      "output": "'What is / is not coming' message framework; communication principles",
+      "deliverable": "Communications plan; simplified roadmap; collateral",
+      "emphasis": "Full roadmap; plain language",
+      "minutes": 2,
+      "notes": "Which worries you more: hearing too little, or hearing plans that then change?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 6,
+      "id": "R3",
+      "question": "If this works as planned, what gets better for you in your day-to-day, first with the agents arriving by end of December and then as later agents arrive? What would make it worth the effort of changing how you work?",
+      "wave1Agents": "Meeting recaps; Knowledge hub; Attention dashboard",
+      "laterAgents": "Requirements capture; Status reports; Delivery plans",
+      "output": "What's-in-it-for-me messages by persona; learning motivation",
+      "deliverable": "Vision and messaging; launch message; persona-specific communications",
+      "emphasis": "What's in it for me",
+      "minutes": 3,
+      "notes": "What would you tell a colleague in your role is in it for them?",
+      "leadershipPriority": true
+    },
+    {
+      "order": 7,
+      "id": "C2",
+      "question": "When an agent flags something for you, such as two documents that disagree, an out-of-date document, a risk in a design draft or a concern that keeps coming up, who should be told, how would you like to hear (Teams, email, ADO, a personal to-do list), and what would make you start ignoring these alerts?",
+      "wave1Agents": "Continuous checks; Attention dashboard",
+      "laterAgents": "Functional design drafts (risk flags for the architect)",
+      "output": "Channel and alert preferences",
+      "deliverable": "Communications plan; input to agent design",
+      "emphasis": "Communications channels",
+      "minutes": 3,
+      "notes": "Which channels do you already check daily?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 8,
+      "id": "D1",
+      "question": "Even if the agents work well, what would stop you using them in your normal delivery, now and as more agents arrive?",
+      "wave1Agents": "All five",
+      "laterAgents": "Agents that draft work: requirements, designs, test cases, plans, status reports",
+      "output": "Barriers and risk log by persona",
+      "deliverable": "Risks and mitigations in the change and adoption plan; PM/OL review",
+      "emphasis": "Adoption barriers; risk mitigation",
+      "minutes": 3,
+      "notes": "Does your answer change for agents that draft documents compared with agents that only watch and flag? Time, trust, permissions, client concerns, habit?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 9,
+      "id": "D2",
+      "question": "What would you need to see to trust an agent's output, and what could we show you before December? Would you need more proof for agents that draft requirements, designs or test cases?",
+      "wave1Agents": "Meeting recaps; Continuous checks; Knowledge hub",
+      "laterAgents": "Requirements capture; Fit-gap sorting; Design drafts; Test cases",
+      "output": "Trust-building and engagement activities",
+      "deliverable": "Engagement and communications plan (demos, early adopters)",
+      "emphasis": "Adoption barriers; risk mitigation",
+      "minutes": 2,
+      "notes": "A live demo, a colleague using it, accuracy results? Whose use of it would carry the most weight?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 10,
+      "id": "E1",
+      "question": "Based on the work you do on a project, what would you need to learn or practise to use these agents well, both the first five and the ones that draft requirements, designs, plans or reports later?",
+      "wave1Agents": "All five",
+      "laterAgents": "Requirements capture; Design drafts; Delivery plans; Status reports; Training content",
+      "output": "Learning needs by the work people do",
+      "deliverable": "Learning pathways and learning journey with L&D",
+      "emphasis": "Learning by work performed",
+      "minutes": 3,
+      "notes": "Which tasks would you want help with first? What would you want explained in the terms of your own work (finance, supply chain, technical, delivery management)? How would you check an agent's draft?",
+      "leadershipPriority": true
+    },
+    {
+      "order": 11,
+      "id": "E3",
+      "question": "The plan includes a short online course, half-day sessions, office hours, a peer community and coaching. Which would you use, and for later agents would you want training as each one arrives or ahead of time?",
+      "wave1Agents": "All five",
+      "laterAgents": "Each later agent as it arrives; Training content",
+      "output": "Learning formats, timing and engagement mix",
+      "deliverable": "Learning journey; training plan; engagement plan",
+      "emphasis": "Learning pathways; L&D input",
+      "minutes": 2,
+      "notes": "What would make you attend rather than postpone?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 12,
+      "id": "F1",
+      "question": "How do you usually hear about practice-wide changes (channel, sender), which of those do you actually read or act on, and how often would you want updates as later agents get dates?",
+      "wave1Agents": "All five (launch communications)",
+      "laterAgents": "All later waves (updates as dates firm up)",
+      "output": "Channel map and update cadence",
+      "deliverable": "Communications plan; weekly Teams posts; FAQs",
+      "emphasis": "Communications channels and cadence",
+      "minutes": 2,
+      "notes": "Which message did you most recently act on, and why?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 13,
+      "id": "F2",
+      "question": "Whose view would most influence whether you try a new way of working?",
+      "wave1Agents": "Not agent-specific",
+      "laterAgents": "Not agent-specific",
+      "output": "Influencer and champion candidates by persona",
+      "deliverable": "Engagement plan (champions, early adopters)",
+      "emphasis": "Champion selection",
+      "minutes": 2,
+      "notes": "Role or named people. Would they be supportive? Who else should we talk to?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 14,
+      "id": "F4",
+      "question": "Would you want to help test or champion the agents arriving by end of December, or help shape a later agent in your area, such as requirements, design, plans or status? What would you need in order to say yes?",
+      "wave1Agents": "All five (December testing)",
+      "laterAgents": "Early input on a later agent in their area",
+      "output": "Champion and early-tester list by persona",
+      "deliverable": "Engagement plan; Wave 1 testing; later-release planning",
+      "emphasis": "Champion selection",
+      "minutes": 2,
+      "notes": "How much time could you give? Would recognition for early adopters matter, and in what form?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 15,
+      "id": "G1",
+      "question": "A few months after rollout, how would you know it is working, for you and for your team? What would you notice, and what should we measure as later agents arrive?",
+      "wave1Agents": "All five (30/60/90-day measures)",
+      "laterAgents": "Later agents' measures as they land",
+      "output": "Success indicators; survey items",
+      "deliverable": "Adoption measurement approach; 30/60/90-day adoption reports",
+      "emphasis": "Adoption measurement",
+      "minutes": 2,
+      "notes": "Usage, time saved, quality, fewer late surprises, satisfaction?",
+      "leadershipPriority": false
+    },
+    {
+      "order": 16,
+      "id": "H2",
+      "question": "What is the one thing we should do, or avoid, to make this work, for the first agents and for what comes after?",
+      "wave1Agents": "All",
+      "laterAgents": "All",
+      "output": "Top recommendations; risk log",
+      "deliverable": "Risks in the change and adoption plan; leadership-ready summary page",
+      "emphasis": "Risk mitigation; leadership summary",
+      "minutes": 2,
+      "notes": "",
+      "leadershipPriority": false
+    }
+  ],
+  "asks": [
+    {
+      "n": 1,
+      "ask": "Every question has a defined consumer and output. Results are tagged by level and persona, traceable to the question and interview, and summarized on a leadership-ready page.",
+      "idsLabel": "All 16",
+      "ids": [
+        "R1",
+        "A1",
+        "B1",
+        "R2",
+        "B4",
+        "R3",
+        "C2",
+        "D1",
+        "D2",
+        "E1",
+        "E3",
+        "F1",
+        "F2",
+        "F4",
+        "G1",
+        "H2"
+      ],
+      "response": "Output and Future deliverable columns on every question; section C lists the outputs."
+    },
+    {
+      "n": 2,
+      "ask": "Record each participant's current project role or persona. One question set for everyone; analyze by role afterward.",
+      "idsLabel": "R1 (+ profile form)",
+      "ids": [
+        "R1"
+      ],
+      "response": "R1 captures the role (confirming the profile form); the By Role tab shows what each question tells us per role."
+    },
+    {
+      "n": 3,
+      "ask": "Cover the broader roadmap, emphasizing Foundation and Wave 1. Show later waves to learn which future capabilities matter most.",
+      "idsLabel": "B1, R2, B4 (+ all)",
+      "ids": [
+        "B1",
+        "R2",
+        "B4"
+      ],
+      "response": "Every question touches later agents (column E); B1, R2 and B4 ask about the full roadmap directly."
+    },
+    {
+      "n": 4,
+      "ask": "Persona heat map: see where each persona finds value. If a persona values a later wave over Wave 1, say so.",
+      "idsLabel": "R2",
+      "ids": [
+        "R2"
+      ],
+      "response": "R2 ratings feed the Agent Heat Map tab, which suggests the message for each persona."
+    },
+    {
+      "n": 5,
+      "ask": "Learning pathways based on the work a person does, and what's in it for me.",
+      "idsLabel": "E1, E3, R3",
+      "ids": [
+        "E1",
+        "E3",
+        "R3"
+      ],
+      "response": "E1 asks what to learn based on the work they do; R3 asks what's in it for them; E3 asks about formats and timing."
+    },
+    {
+      "n": 6,
+      "ask": "Change communications and L&D are one effort: findings shape what people hear and how they are equipped.",
+      "idsLabel": "B4, C2, F1 | E1, E3",
+      "ids": [
+        "B4",
+        "C2",
+        "F1",
+        "E1",
+        "E3"
+      ],
+      "response": "Outputs split into communications inputs and learning inputs."
+    },
+    {
+      "n": 7,
+      "ask": "Plain language: describe what agents do, with no unexplained jargon.",
+      "idsLabel": "All 16",
+      "ids": [
+        "R1",
+        "A1",
+        "B1",
+        "R2",
+        "B4",
+        "R3",
+        "C2",
+        "D1",
+        "D2",
+        "E1",
+        "E3",
+        "F1",
+        "F2",
+        "F4",
+        "G1",
+        "H2"
+      ],
+      "response": "Questions use the agent names and descriptions from the stakeholder deck glossary and no internal terms."
+    },
+    {
+      "n": 8,
+      "ask": "Sample covers ERP roles and personas, including an additional senior manager or PM. Ask Winston whether directors need a heads-up first.",
+      "idsLabel": "R1",
+      "ids": [
+        "R1"
+      ],
+      "response": "Not a question: a scheduling check. Persona tags show gaps in coverage."
+    }
+  ],
+  "outputs": [
+    {
+      "n": 1,
+      "output": "Validated change vision: what is changing, what stays, and why, revised after interviewees react.",
+      "idsLabel": "B1, R3, H2",
+      "ids": [
+        "B1",
+        "R3",
+        "H2"
+      ],
+      "deliverable": "Change vision",
+      "neededBy": "Wk 3, 10/9 (overdue per schedule)"
+    },
+    {
+      "n": 2,
+      "output": "Stakeholder groups, needs and key messages: groups by level, persona and project situation, with what lands for each.",
+      "idsLabel": "R1, A1, B1, R2, R3, D1, F1",
+      "ids": [
+        "R1",
+        "A1",
+        "B1",
+        "R2",
+        "R3",
+        "D1",
+        "F1"
+      ],
+      "deliverable": "Stakeholder groups and key needs/messages template",
+      "neededBy": "Wk 4, 10/16 (overdue per schedule)"
+    },
+    {
+      "n": 3,
+      "output": "Impact assessment by group: degree of impact of the agents on each group.",
+      "idsLabel": "R1, A1, R2, C2",
+      "ids": [
+        "R1",
+        "A1",
+        "R2",
+        "C2"
+      ],
+      "deliverable": "Impact assessment",
+      "neededBy": "Wk 4, 10/16 (overdue per schedule)"
+    },
+    {
+      "n": 4,
+      "output": "Tool-adoption personas: persona set from level, project role, the work they do and attitude to AI tools.",
+      "idsLabel": "R1, D1, E1 (+ profile form)",
+      "ids": [
+        "R1",
+        "D1",
+        "E1"
+      ],
+      "deliverable": "Differentiated learning pathways (with L&D)",
+      "neededBy": "Wk 5, 10/22"
+    },
+    {
+      "n": 5,
+      "output": "Learning needs and format inputs: skills needed, preferred formats and timing, by the work people do.",
+      "idsLabel": "E1, E3 (+ profile form)",
+      "ids": [
+        "E1",
+        "E3"
+      ],
+      "deliverable": "Learning journey; training plan",
+      "neededBy": "Wk 5, 10/22"
+    },
+    {
+      "n": 6,
+      "output": "Communications inputs: channels, cadence, alert preferences, and the 'what is / is not coming' wording.",
+      "idsLabel": "B1, B4, C2, F1, F2",
+      "ids": [
+        "B1",
+        "B4",
+        "C2",
+        "F1",
+        "F2"
+      ],
+      "deliverable": "Communications plan; collateral; simplified roadmap",
+      "neededBy": "Wk 6, 10/30; collateral Wk 8, 11/13"
+    },
+    {
+      "n": 7,
+      "output": "Champion and early-tester list by persona.",
+      "idsLabel": "F2, F4",
+      "ids": [
+        "F2",
+        "F4"
+      ],
+      "deliverable": "Engagement plan; Wave 1 testing",
+      "neededBy": "Wk 6, 10/30"
+    },
+    {
+      "n": 8,
+      "output": "Barriers and risk log with mitigations.",
+      "idsLabel": "D1, D2, H2",
+      "ids": [
+        "D1",
+        "D2",
+        "H2"
+      ],
+      "deliverable": "Risks in the change and adoption plan; PM/OL review",
+      "neededBy": "Wk 8, 11/13"
+    },
+    {
+      "n": 9,
+      "output": "Success indicators and baselines.",
+      "idsLabel": "A1, G1",
+      "ids": [
+        "A1",
+        "G1"
+      ],
+      "deliverable": "Adoption measurement approach; 30/60/90-day adoption reports",
+      "neededBy": "Wk 6, 10/30"
+    },
+    {
+      "n": 10,
+      "output": "Persona heat map: how useful each persona finds each agent now and later, and whether to lead with Wave 1 or acknowledge later waves.",
+      "idsLabel": "R1, R2, R3, B4",
+      "ids": [
+        "R1",
+        "R2",
+        "R3",
+        "B4"
+      ],
+      "deliverable": "Persona-specific messages; learning pathways; later-release planning",
+      "neededBy": "Wk 6, 10/30"
+    },
+    {
+      "n": 11,
+      "output": "Leadership-ready summary page: what we heard by persona, what the plan will do, what we need from leaders.",
+      "idsLabel": "All 16",
+      "ids": [
+        "R1",
+        "A1",
+        "B1",
+        "R2",
+        "B4",
+        "R3",
+        "C2",
+        "D1",
+        "D2",
+        "E1",
+        "E3",
+        "F1",
+        "F2",
+        "F4",
+        "G1",
+        "H2"
+      ],
+      "deliverable": "Readout to Winston; draft change and adoption plan",
+      "neededBy": "Wk 6, 10/30"
+    }
+  ]
+}
