@@ -5,7 +5,7 @@ import { interview, sectionOf } from "@/lib/interview";
 
 const { questions } = interview;
 
-export default function InterviewWalkthrough() {
+export default function InterviewWalkthrough({ onBackToIntro }: { onBackToIntro?: () => void }) {
   const [index, setIndex] = useState(0);
   const current = questions[index];
   const total = questions.length;
@@ -57,11 +57,11 @@ export default function InterviewWalkthrough() {
           <div className="flex items-center justify-between gap-4">
             <button
               type="button"
-              onClick={() => go(-1)}
-              disabled={index === 0}
+              onClick={() => (index === 0 && onBackToIntro ? onBackToIntro() : go(-1))}
+              disabled={index === 0 && !onBackToIntro}
               className="text-sm font-bold rounded-lg px-5 py-2.5 border border-hairline hover:border-orange hover:text-orange transition-colors disabled:opacity-40 disabled:pointer-events-none"
             >
-              &larr; Previous
+              &larr; {index === 0 && onBackToIntro ? "Back to intro" : "Previous"}
             </button>
             <span className="hidden sm:inline text-[13px] text-muted">Use &larr; &rarr; keys to move</span>
             <button

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import WalkthroughNav from "@/components/walkthrough/WalkthroughNav";
-import InterviewWalkthrough from "@/components/walkthrough/InterviewWalkthrough";
+import WalkthroughStages from "@/components/walkthrough/WalkthroughStages";
 import Footer from "@/components/Footer";
 import { interview } from "@/lib/interview";
 
@@ -22,12 +22,12 @@ export default function WalkthroughPage() {
             ERP Stakeholder Interview Guide
           </h1>
           <p className="text-[17px] text-body max-w-[680px] leading-relaxed mb-6 text-pretty animate-in" style={{ animationDelay: "0.2s" }}>
-            Here are the {interview.questions.length} questions we&apos;ll walk through together, so you know what to expect
-            before our conversation.
+            A conversation of about 45 minutes to help shape how Foundation and Wave 1 land with you and your team. We&apos;ll
+            start with a quick recap, then walk through the {interview.questions.length} questions together.
           </p>
         </div>
       </section>
-      <InterviewWalkthrough />
+      <WalkthroughStages />
       <Footer />
     </main>
   );
