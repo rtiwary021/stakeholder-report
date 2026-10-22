@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { howUsed, notYet, themes, timeline, waves, whyAsking } from "@/lib/intro";
+import { howUsed, notYet, otherTools, roadmapNote, themes, timeline, wave1Expect, waves, whyAsking } from "@/lib/intro";
 
 function Label({ children, muted }: { children: React.ReactNode; muted?: boolean }) {
   return (
@@ -76,17 +76,17 @@ export default function IntroSummary({ onStart }: { onStart: () => void }) {
                 onClick={() => setWaveId(w.id)}
                 className={`rounded-lg px-3 py-3 text-left flex flex-col gap-0.5 border transition-colors ${
                   active
-                    ? w.funded
+                    ? w.current
                       ? "bg-orange border-orange text-white"
                       : "bg-body border-body text-white"
-                    : w.funded
+                    : w.current
                       ? "bg-orange/5 border-orange/40 hover:border-orange"
                       : "bg-card border-transparent hover:border-muted/50"
                 }`}
               >
                 <span className="text-[15px] font-bold">{w.name}</span>
                 <span className={`text-[12px] ${active ? "text-white/85" : "text-muted"}`}>
-                  {w.funded ? "Funded now" : "Later release"}
+                  {w.current ? "Current focus" : "Later release"}
                 </span>
               </button>
             );
@@ -96,7 +96,7 @@ export default function IntroSummary({ onStart }: { onStart: () => void }) {
         <div key={wave.id} role="tabpanel" className="flex flex-col gap-4 animate-in">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <h3 className="text-[22px]">{wave.title}</h3>
-            <span className={`text-[13px] font-bold ${wave.funded ? "text-orange" : "text-muted"}`}>{wave.status}</span>
+            <span className={`text-[13px] font-bold ${wave.current ? "text-orange" : "text-muted"}`}>{wave.status}</span>
           </div>
           {wave.summary && <p className="text-[15px] leading-relaxed text-pretty max-w-[760px]">{wave.summary}</p>}
           {wave.agents.length > 0 && (
@@ -105,21 +105,41 @@ export default function IntroSummary({ onStart }: { onStart: () => void }) {
                 <li
                   key={a.name}
                   className={`rounded-lg p-4 flex flex-col gap-1 border ${
-                    wave.funded ? "bg-orange/5 border-orange/40" : "bg-card border-transparent"
+                    wave.current ? "bg-orange/5 border-orange/40" : "bg-card border-transparent"
                   }`}
                 >
-                  <span className={`text-[15px] font-bold ${wave.funded ? "text-orange" : ""}`}>{a.name}</span>
+                  <span className={`text-[15px] font-bold ${wave.current ? "text-orange" : ""}`}>{a.name}</span>
                   <span className="text-[14px] leading-relaxed text-body">{a.description}</span>
                 </li>
               ))}
             </ul>
           )}
           {wave.id === "wave1" && (
-            <div className="bg-card rounded-lg p-4 flex flex-col gap-3">
-              <Label muted>Don&apos;t expect yet</Label>
-              <Bullets items={notYet} />
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="bg-orange/5 border border-orange rounded-lg p-4 flex flex-col gap-3">
+                <Label>You can expect</Label>
+                <Bullets items={wave1Expect} />
+              </div>
+              <div className="bg-card rounded-lg p-4 flex flex-col gap-3">
+                <Label muted>Don&apos;t expect yet</Label>
+                <Bullets items={notYet} />
+              </div>
             </div>
           )}
+        </div>
+
+        <div className="border-t border-hairline pt-5 flex flex-col gap-3">
+          <Label muted>Outside the waves</Label>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {otherTools.map((t) => (
+              <li key={t.name} className="rounded-lg p-4 flex flex-col gap-1 border border-dashed border-muted/50">
+                <span className="text-[11px] font-bold tracking-[1.5px] uppercase text-muted">{t.tag}</span>
+                <span className="text-[15px] font-bold">{t.name}</span>
+                <span className="text-[14px] leading-relaxed text-body">{t.description}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-[13px] italic text-muted text-pretty">{roadmapNote}</p>
         </div>
       </div>
 

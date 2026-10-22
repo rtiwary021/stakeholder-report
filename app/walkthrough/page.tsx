@@ -22,7 +22,7 @@ export default function WalkthroughPage() {
             ERP Stakeholder Interview Guide
           </h1>
           <p className="text-[17px] text-body max-w-[680px] leading-relaxed mb-6 text-pretty animate-in" style={{ animationDelay: "0.2s" }}>
-            A conversation of about 45 minutes to help shape how Foundation and Wave 1 land with you and your team. We&apos;ll
+            A conversation of about 30 minutes to help shape how Foundation and Wave 1 land with you and your team. We&apos;ll
             start with a quick recap, then walk through the {interview.questions.length} questions together.
           </p>
         </div>
