@@ -114,7 +114,7 @@
     {
       "order": 9,
       "id": "Q9",
-      "question": "Based on the work you do on a project, what would you need to learn or practise to use these agents well, both the first five and the ones that draft requirements, designs, plans or reports later?",
+      "question": "Based on the work you do on a project, what would you need to learn or practice to use these agents well, both the first five and the ones that draft requirements, designs, plans or reports later?",
       "wave1Agents": "All five",
       "laterAgents": "Requirements capture; Design drafts; Delivery plans; Status reports; Training content",
       "output": "",
