@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { interview } from "@/lib/interview";
+import AgentReference from "./AgentReference";
 
 const { questions } = interview;
 
@@ -103,6 +104,8 @@ export default function InterviewWalkthrough({ onBackToIntro }: { onBackToIntro?
             ))}
           </ol>
         </div>
+
+        <AgentReference />
       </div>
     </section>
   );
