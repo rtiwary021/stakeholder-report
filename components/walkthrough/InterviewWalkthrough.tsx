@@ -76,6 +76,8 @@ export default function InterviewWalkthrough({ onBackToIntro }: { onBackToIntro?
           </div>
         </div>
 
+        <AgentReference />
+
         <div className="flex flex-col gap-4">
           <h2 className="text-[22px]">All {total} questions</h2>
           <ol className="bg-white border border-hairline rounded-[10px] divide-y divide-hairline">
@@ -104,8 +106,6 @@ export default function InterviewWalkthrough({ onBackToIntro }: { onBackToIntro?
             ))}
           </ol>
         </div>
-
-        <AgentReference />
       </div>
     </section>
   );
