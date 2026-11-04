@@ -23,6 +23,7 @@ module.exports = {
         concerned: "#E5533D",
         amber: "#FFBF1F",
         charcoal: "#2B2B2B",
+        peach: "#FFE8D6",
       },
       fontFamily: {
         serif: ["Georgia", "Times New Roman", "serif"],

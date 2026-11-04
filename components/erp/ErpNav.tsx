@@ -12,6 +12,7 @@ export const ERP_SECTIONS = [
   { id: "erp-waves", label: "Future Waves" },
   { id: "erp-practice", label: "Practice Focus" },
   { id: "erp-recommendations", label: "Recommendations" },
+  { id: "erp-appendix", label: "Appendix" },
 ];
 
 export default function ErpNav() {

@@ -11,6 +11,7 @@ import ErpFutureWaves from "@/components/erp/ErpFutureWaves";
 import ErpPlan from "@/components/erp/ErpPlan";
 import ErpSkills from "@/components/erp/ErpSkills";
 import ErpRecommendations from "@/components/erp/ErpRecommendations";
+import ErpAppendix from "@/components/erp/ErpAppendix";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
 
@@ -36,6 +37,7 @@ export default function ErpResultsPage() {
       <ErpPlan />
       <ErpSkills />
       <ErpRecommendations />
+      <ErpAppendix />
       <footer className="border-t border-hairline py-8">
         <div className="max-w-content mx-auto px-8 text-[13px] text-muted italic">
           Practice Transformation Office &nbsp;|&nbsp; ERP · 18 stakeholder interviews
