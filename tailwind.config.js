@@ -18,6 +18,11 @@ module.exports = {
         grey4: "#A1A8B3",
         grey5: "#B5BCC4",
         grey6: "#CBD1D6",
+        positive: "#3F7A4F",
+        mixed: "#FF914D",
+        concerned: "#E5533D",
+        amber: "#FFBF1F",
+        charcoal: "#2B2B2B",
       },
       fontFamily: {
         serif: ["Georgia", "Times New Roman", "serif"],

@@ -82,12 +82,17 @@ export default function NavBar() {
             />
           )}
         </nav>
-        <Link
-          href="/walkthrough"
-          className="text-[13px] font-bold text-white bg-orange hover:bg-orange2 transition-colors rounded-full px-4 py-1.5 whitespace-nowrap"
-        >
-          Interview Walkthrough
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/erp" className="text-[13px] font-bold text-muted hover:text-orange transition-colors whitespace-nowrap">
+            ERP Results
+          </Link>
+          <Link
+            href="/walkthrough"
+            className="text-[13px] font-bold text-white bg-orange hover:bg-orange2 transition-colors rounded-full px-4 py-1.5 whitespace-nowrap"
+          >
+            Interview Walkthrough
+          </Link>
+        </div>
       </div>
     </div>
   );

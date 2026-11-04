@@ -12,6 +12,9 @@ export default function WalkthroughNav() {
           <Link href="/" className="text-[13px] font-bold text-muted hover:text-orange transition-colors">
             Stakeholder Report
           </Link>
+          <Link href="/erp" className="text-[13px] font-bold text-muted hover:text-orange transition-colors">
+            ERP Results
+          </Link>
           <span className="text-[13px] font-bold text-orange border-b-2 border-orange pb-0.5" aria-current="page">
             Interview Walkthrough
           </span>
