@@ -695,7 +695,7 @@ export const baselineSkills: Skill[] = [
   { name: "Training Content Development", desc: "Builds guides and materials to bring end users along", count: 3 },
   { name: "Cross-Functional Risk Management", desc: "Spots conflicts and dependencies across design areas before they surface", count: 4 },
   { name: "Data Migration & Validation", desc: "Field-by-field transformation logic and quality-checking migrated data", count: 4 },
-  { name: "Proposals & Business Development", desc: "RFI/RFP response writing, pursuit support", count: 3 },
+  { name: "Proposals & Business Development", desc: "RFP response writing, pursuit support", count: 3 },
 ];
 
 export const futureSkills: Skill[] = [
